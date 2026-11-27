@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="300" height="64" viewBox="0 0 300 64" role="img" aria-label="Download for Linux (x64 · AppImage)">
+  <title>Download for Linux (x64 · AppImage)</title>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#114CF5"/><stop offset="1" stop-color="#0639C8"/></linearGradient>
+    <clipPath id="r"><rect width="300" height="64" rx="16"/></clipPath>
+  </defs>
+  <g clip-path="url(#r)">
+    <rect width="300" height="64" fill="url(#bg)"/>
+    <g stroke="#fff" stroke-opacity=".07" stroke-width="1"><path d="M20 0V64"/><path d="M40 0V64"/><path d="M60 0V64"/><path d="M80 0V64"/><path d="M100 0V64"/><path d="M120 0V64"/><path d="M140 0V64"/><path d="M160 0V64"/><path d="M180 0V64"/><path d="M200 0V64"/><path d="M220 0V64"/><path d="M240 0V64"/><path d="M260 0V64"/><path d="M280 0V64"/><path d="M0 16H300"/><path d="M0 32H300"/><path d="M0 48H300"/></g>
+  </g>
+  <rect x=".5" y=".5" width="299" height="63" rx="15.5" fill="none" stroke="#fff" stroke-opacity=".22"/>
+  <rect x="12" y="12" width="40" height="40" rx="11" fill="#fff" fill-opacity=".14"/>
+  <g transform="translate(20 20)">
+      <mask id="tux"><rect width="24" height="24" fill="#fff"/>
+        <ellipse cx="12" cy="15.4" rx="3.5" ry="4.4" fill="#000"/>
+        <circle cx="10.5" cy="6.3" r=".9" fill="#000"/><circle cx="13.5" cy="6.3" r=".9" fill="#000"/></mask>
+      <g mask="url(#tux)" fill="#fff"><circle cx="12" cy="7" r="4.4"/><ellipse cx="12" cy="14.6" rx="6.2" ry="6.6"/></g>
+      <ellipse cx="12" cy="8.7" rx="1.6" ry=".9" fill="#AEFC00"/>
+      <ellipse cx="8.2" cy="20.6" rx="3" ry="1.5" fill="#AEFC00"/><ellipse cx="15.8" cy="20.6" rx="3" ry="1.5" fill="#AEFC00"/>
+  </g>
+  <text x="66" y="29" fill="#fff" font-family="Inter, 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif" font-size="15" font-weight="700">Download for Linux</text>
+  <text x="66" y="47" fill="#AEFC00" font-family="Inter, 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif" font-size="12" font-weight="600">x64 · AppImage</text>
+  <circle cx="272" cy="32" r="14" fill="#AEFC00"/>
+  <path d="M272 25.5v12M266.8 32.8l5.2 5.2 5.2-5.2" fill="none" stroke="#0639C8" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

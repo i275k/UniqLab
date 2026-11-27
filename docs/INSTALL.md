@@ -5,12 +5,14 @@ UniqLab packages are built in GitHub Actions and are **not signed with paid cert
 therefore warns the first time you open the app. Check the download first:
 
 ```bash
-shasum -a 256 UniqLab-*.dmg              # macOS
-sha256sum UniqLab-*.AppImage             # Linux
-certutil -hashfile UniqLab-1.0.0-windows-x64.exe SHA256 # Windows (Command Prompt)
+shasum -a 256 UniqLab-macos-arm64.dmg                 # macOS
+sha256sum UniqLab-linux-x64.AppImage                   # Linux
+certutil -hashfile UniqLab-windows-x64.exe SHA256      # Windows (Command Prompt)
 ```
 
-Compare the result with the matching line in `SHA256SUMS.txt` from the same release.
+Compare the result with the matching line in `SHA256SUMS.txt` from the same release
+(latest release: https://github.com/i275k/UniqLab/releases/latest/download/SHA256SUMS.txt).
+The file names have no version number, so the links in the README always download the latest version.
 
 ## macOS (Apple silicon, macOS 13 or newer)
 
@@ -30,7 +32,7 @@ xattr -dr com.apple.quarantine /Applications/UniqLab.app
 
 ## Windows 10/11 (x64)
 
-1. Run `UniqLab-<version>-windows-x64.exe`.
+1. Run `UniqLab-windows-x64.exe`.
 2. Microsoft Defender SmartScreen may show “Windows protected your PC”. Click
    **More info → Run anyway**.
 3. The installer works per user (`%LOCALAPPDATA%\Programs\UniqLab`) and does not need
@@ -39,8 +41,8 @@ xattr -dr com.apple.quarantine /Applications/UniqLab.app
 ## Linux (x86_64)
 
 ```bash
-chmod +x UniqLab-<version>-linux-x64.AppImage
-./UniqLab-<version>-linux-x64.AppImage
+chmod +x UniqLab-linux-x64.AppImage
+./UniqLab-linux-x64.AppImage
 ```
 
 If your distribution has no FUSE 2 library, run it with
