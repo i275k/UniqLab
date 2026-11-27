@@ -23,5 +23,7 @@ if ($LASTEXITCODE -ne 0) { throw "Inno Setup failed" }
 
 $Setup = "dist\UniqLab-$Version-windows-x64.exe"
 $Hash = (Get-FileHash $Setup -Algorithm SHA256).Hash.ToLower()
-"$Hash  $(Split-Path $Setup -Leaf)" | Out-File -Encoding ascii "$Setup.sha256"
+# LF line ending, so `sha256sum -c` on Linux/macOS reads the file name without a trailing CR.
+[System.IO.File]::WriteAllText((Join-Path (Get-Location) "$Setup.sha256"), "$Hash  $(Split-Path $Setup -Leaf)`n",
+    [System.Text.Encoding]::ASCII)
 Write-Host "Built $Setup"
