@@ -54,6 +54,21 @@ excludes = [
     "PySide6.QtConcurrent", "PySide6.QtPrintSupport", "PySide6.QtSvg", "PySide6.QtSvgWidgets",
 ]
 
+if sys.platform.startswith("linux"):
+    # Leave out Qt's GTK3 platform theme. It would pull the build system's whole GTK stack (GTK, GDK, Pango,
+    # Cairo, ATK, …) into the AppImage, where it can clash with the user's GTK and adds licence obligations.
+    # UniqLab draws its own light/dark theme; file dialogs use the XDG portal or Qt's own dialog instead.
+    import os as _os
+    from PyInstaller.utils.hooks import qt as _qt_hooks
+
+    _collect_plugins = _qt_hooks.QtLibraryInfo.collect_plugins
+
+    def _collect_plugins_without_gtk3(self, plugin_type):
+        return [entry for entry in _collect_plugins(self, plugin_type)
+                if not _os.path.basename(entry[0]).startswith("libqgtk3")]
+
+    _qt_hooks.QtLibraryInfo.collect_plugins = _collect_plugins_without_gtk3
+
 windows_version_file = None
 if sys.platform.startswith("win"):
     from PyInstaller.utils.win32.versioninfo import (

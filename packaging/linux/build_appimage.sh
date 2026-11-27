@@ -28,6 +28,48 @@ chmod +x "$TOOLS/appimagetool"
 rm -rf build dist
 pyinstaller --noconfirm --clean packaging/uniqlab.spec
 
+# Copyright/licence files of the distribution libraries PyInstaller copied from the build system.
+# Libraries of the Python runtime and the PySide6 wheel are not distribution packages; they are
+# covered by THIRD_PARTY_NOTICES.md and the files in licenses/.
+SYSLIC="dist/UniqLab/_internal/licenses/system-libraries"
+mkdir -p "$SYSLIC"
+MANIFEST="$SYSLIC/MANIFEST.txt"
+{
+  echo "Shared libraries in this package that were copied from the Ubuntu 22.04 build system,"
+  echo "with the Debian package that provides each one. The package's copyright file is stored"
+  echo "next to this manifest as <package>.copyright."
+  echo
+} > "$MANIFEST"
+owner_of() {  # library file name -> Debian package name (empty when not from a package)
+  local path real candidate
+  path="$(/sbin/ldconfig -p | awk -v n="$1" '$1 == n && !found { print $NF; found = 1 }')"
+  [[ -n "$path" ]] || return 0
+  real="$(readlink -f "$path")"
+  for candidate in "$path" "$real" "/usr${path#/usr}" "/usr${real#/usr}" "${path#/usr}" "${real#/usr}"; do
+    if dpkg -S "$candidate" >/dev/null 2>&1; then
+      dpkg -S "$candidate" | awk -F: 'NR == 1 { print $1 }'
+      return 0
+    fi
+  done
+}
+while read -r lib; do
+  name="$(basename "$lib")"
+  pkg="$(owner_of "$name")"
+  [[ -n "$pkg" ]] || continue
+  echo "$name  <-  $pkg" >> "$MANIFEST"
+  if [[ ! -f "$SYSLIC/$pkg.copyright" ]]; then
+    cp "/usr/share/doc/$pkg/copyright" "$SYSLIC/$pkg.copyright" \
+      || { echo "no copyright file for $pkg"; exit 1; }
+  fi
+done < <(find dist/UniqLab/_internal -maxdepth 1 -name "*.so*" -type f | sort)
+# Debian copyright files often refer to /usr/share/common-licenses/<name> instead of quoting the text.
+{ grep -ohE '/usr/share/common-licenses/[A-Za-z0-9.+_-]+' "$SYSLIC"/*.copyright || true; } \
+  | sed 's/\.$//' | sort -u | while read -r text; do
+      if [[ -f "$text" ]]; then cp "$text" "$SYSLIC/common-license-$(basename "$text").txt"; fi
+    done
+echo "Bundled distribution libraries:"
+cat "$MANIFEST"
+
 APPDIR="packaging/linux/AppDir"
 rm -rf "$APPDIR"
 mkdir -p "$APPDIR/usr/lib" "$APPDIR/usr/share/applications" "$APPDIR/usr/share/metainfo" \

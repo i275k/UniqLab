@@ -139,6 +139,10 @@ the free minutes; macOS minutes count 10×, Windows 2×): CI ≈ 6 min per OS, B
 `licenses/` holds the license texts shipped in every package. `licenses/Qt-third-party-notices.txt`
 is generated from the official qtbase source archive of the bundled Qt version with
 `tools/make_qt_notices.py` (see the script header); regenerate it when PySide6 is updated.
+On Linux, `packaging/linux/build_appimage.sh` additionally writes
+`licenses/system-libraries/` into the package: the list of shared libraries PyInstaller copied
+from the build system, with each Ubuntu package's copyright file. Qt's GTK3 platform theme is
+left out of the Linux build (see `packaging/uniqlab.spec`), so the GTK stack is not bundled.
 
 Workflow hardening: actions are pinned to full commit SHAs, the default token is read-only
 (`contents: write` only in the opt-in draft job), checkouts do not persist credentials,

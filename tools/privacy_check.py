@@ -18,9 +18,10 @@ import sys
 from pathlib import Path
 
 # Account names that appear in upstream binaries and are not personal data: CI runners,
-# Qt's build machines ("qt"), and the "/Users/Barney" example in Python's standard library.
+# Qt's build machines ("qt"), the build account of GitHub's macOS Python builds ("sysadmin",
+# used by actions/setup-python), and the "/Users/Barney" example in Python's standard library.
 ALLOWED_ACCOUNTS = {b"runner", b"runneradmin", b"shared", b"qt", b"barney", b"user", b"public", b"default",
-                    b"linuxbrew", b"builder", b"builduser"}
+                    b"linuxbrew", b"builder", b"builduser", b"sysadmin"}
 HOME_PATTERNS = [
     re.compile(rb"/Users/([A-Za-z0-9._-]{2,})"),
     re.compile(rb"/home/([A-Za-z0-9._-]{2,})"),

@@ -55,6 +55,17 @@ licensed under the Apache License 2.0 (`licenses/Apache-2.0.txt`). The `bz2`
 module includes bzip2 (`licenses/bzip2-LICENSE.txt`); the `lzma` module uses
 liblzma from XZ Utils (0BSD/public domain).
 
+### Linux system libraries
+
+The AppImage also contains a few shared libraries copied from the Ubuntu 22.04
+build system (for example GLib, fontconfig, FreeType, D-Bus, xkbcommon and their
+dependencies), used unmodified. `licenses/system-libraries/MANIFEST.txt` lists
+each library with the Ubuntu package it comes from, and the package's copyright
+and license file is stored next to it as `<package>.copyright`. The source code
+is available from Ubuntu (`apt-get source <package>`, or
+https://launchpad.net/ubuntu/+source/<package>). Qt's GTK3 platform theme is
+deliberately left out, so GTK itself is not bundled.
+
 ### Pillow
 
 Pillow is distributed with prebuilt image libraries (libjpeg-turbo, libpng,

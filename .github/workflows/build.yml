@@ -191,6 +191,10 @@ jobs:
           if find squashfs-root -iname "ffmpeg*" -o -iname "ffprobe*" -o -iname "exiftool*" | grep .; then
             echo "FFmpeg/ExifTool must not be bundled"; exit 1
           fi
+          if find squashfs-root -name "libgtk-3*" -o -name "libqgtk3*" | grep .; then
+            echo "the GTK stack must not be bundled"; exit 1
+          fi
+          test -s squashfs-root/usr/lib/UniqLab/_internal/licenses/system-libraries/MANIFEST.txt
           python "$GITHUB_WORKSPACE/tools/privacy_check.py" squashfs-root
           # --appimage-extract-and-run: GitHub runners have no FUSE 2.
           "$IMG" --appimage-extract-and-run --self-test "$RUNNER_TEMP/selftest.json" --install-tools || STATUS=$?
