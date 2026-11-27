@@ -6,7 +6,6 @@ set -euo pipefail
 
 ROOT="$(cd "$(dirname "$0")/../.." && pwd)"
 cd "$ROOT"
-VERSION="$(python -c 'import uniqlab; print(uniqlab.__version__)')"
 
 APPIMAGETOOL_URL="https://github.com/AppImage/appimagetool/releases/download/1.9.1/appimagetool-x86_64.AppImage"
 APPIMAGETOOL_SHA256="ed4ce84f0d9caff66f50bcca6ff6f35aae54ce8135408b3fa33abfc3cb384eb0"
@@ -83,7 +82,7 @@ cp packaging/linux/uniqlab.png "$APPDIR/uniqlab.png"
 cp packaging/linux/uniqlab.png "$APPDIR/usr/share/icons/hicolor/512x512/apps/uniqlab.png"
 ln -sf uniqlab.png "$APPDIR/.DirIcon"
 
-OUT="dist/UniqLab-${VERSION}-linux-x64.AppImage"
+OUT="dist/UniqLab-linux-x64.AppImage"  # stable name for releases/latest/download links
 # --appimage-extract-and-run: works on runners without FUSE.
 ARCH=x86_64 "$TOOLS/appimagetool" --appimage-extract-and-run --no-appstream \
   --runtime-file "$TOOLS/runtime-x86_64" "$APPDIR" "$OUT"

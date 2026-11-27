@@ -21,7 +21,8 @@ PrivilegesRequiredOverridesAllowed=dialog
 ArchitecturesAllowed=x64compatible
 ArchitecturesInstallIn64BitMode=x64compatible
 OutputDir=..\..\dist
-OutputBaseFilename=UniqLab-{#AppVersion}-windows-x64
+; Stable name (no version) so releases/latest/download links keep working.
+OutputBaseFilename=UniqLab-windows-x64
 SetupIconFile=UniqLab.ico
 UninstallDisplayIcon={app}\UniqLab.exe
 Compression=lzma2/max

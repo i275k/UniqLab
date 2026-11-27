@@ -21,7 +21,7 @@ if (-not $Iscc) { throw "Inno Setup 6 (ISCC.exe) not found" }
 & $Iscc "/DAppVersion=$Version" packaging\windows\uniqlab.iss
 if ($LASTEXITCODE -ne 0) { throw "Inno Setup failed" }
 
-$Setup = "dist\UniqLab-$Version-windows-x64.exe"
+$Setup = "dist\UniqLab-windows-x64.exe"
 $Hash = (Get-FileHash $Setup -Algorithm SHA256).Hash.ToLower()
 # LF line ending, so `sha256sum -c` on Linux/macOS reads the file name without a trailing CR.
 [System.IO.File]::WriteAllText((Join-Path (Get-Location) "$Setup.sha256"), "$Hash  $(Split-Path $Setup -Leaf)`n",

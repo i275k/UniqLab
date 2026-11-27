@@ -117,7 +117,7 @@ jobs:
         env:
           UNIQLAB_DATA_DIR: ${{ runner.temp }}\uniqlab-data
         run: |
-          $setup = (Get-ChildItem dist\UniqLab-*-windows-x64.exe).FullName
+          $setup = (Get-ChildItem dist\UniqLab-windows-x64.exe).FullName
           $target = Join-Path $env:RUNNER_TEMP "UniqLab Install"
           $p = Start-Process -FilePath $setup -ArgumentList "/VERYSILENT", "/SUPPRESSMSGBOXES", "/NORESTART", "/CURRENTUSER", "/DIR=`"$target`"" -Wait -PassThru
           if ($p.ExitCode -ne 0) { throw "installer exit code $($p.ExitCode)" }
@@ -146,7 +146,7 @@ jobs:
       - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         with:
           name: uniqlab-windows-x64
-          path: dist/UniqLab-*-windows-x64.exe*
+          path: dist/UniqLab-windows-x64.exe*
           if-no-files-found: error
           retention-days: 3
 
@@ -220,9 +220,15 @@ jobs:
       - name: Verify per-platform checksums and write SHA256SUMS.txt
         run: |
           cd packages
+          # Stable names (no version) for releases/latest/download links.
+          for f in UniqLab-macos-arm64.dmg UniqLab-windows-x64.exe UniqLab-linux-x64.AppImage; do
+            test -f "$f" && test -f "$f.sha256" || { echo "missing $f or $f.sha256"; exit 1; }
+          done
+          if grep -l $'\r' ./*.sha256; then echo "checksum files must use LF line endings"; exit 1; fi
           for f in ./*.sha256; do sha256sum -c "$f"; done
           rm -f ./*.sha256
           sha256sum UniqLab-* > SHA256SUMS.txt
+          test "$(wc -l < SHA256SUMS.txt)" -eq 3
           cat SHA256SUMS.txt
           ls -la
       - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2

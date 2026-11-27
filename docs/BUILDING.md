@@ -79,9 +79,9 @@ renders `uniqlab/assets/app_icon.png`, `packaging/macos/UniqLab.icns`,
 
 | Platform | Command (repository root, virtualenv active) | Output |
 |---|---|---|
-| macOS arm64 | `packaging/macos/build_dmg.sh` | `dist/UniqLab-<v>-macos-arm64.dmg` |
-| Windows x64 | `powershell -File packaging\windows\build_installer.ps1` | `dist\UniqLab-<v>-windows-x64.exe` |
-| Linux x86_64 | `packaging/linux/build_appimage.sh` | `dist/UniqLab-<v>-linux-x64.AppImage` |
+| macOS arm64 | `packaging/macos/build_dmg.sh` | `dist/UniqLab-macos-arm64.dmg` |
+| Windows x64 | `powershell -File packaging\windows\build_installer.ps1` | `dist\UniqLab-windows-x64.exe` |
+| Linux x86_64 | `packaging/linux/build_appimage.sh` | `dist/UniqLab-linux-x64.AppImage` |
 
 All three use the same PyInstaller one-folder spec (`packaging/uniqlab.spec`), so the Qt
 libraries stay separate, replaceable files (LGPL). No FFmpeg/ExifTool binaries are

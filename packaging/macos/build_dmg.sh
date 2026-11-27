@@ -30,7 +30,7 @@ STAGE="$WORK/dmg"
 mkdir -p "$STAGE"
 ditto "$APP" "$STAGE/UniqLab.app"
 ln -s /Applications "$STAGE/Applications"
-NAME="UniqLab-${VERSION}-macos-arm64.dmg"
+NAME="UniqLab-macos-arm64.dmg"  # stable name for releases/latest/download links
 hdiutil create -volname "UniqLab ${VERSION}" -srcfolder "$STAGE" -fs HFS+ -format UDZO -ov "$WORK/$NAME"
 codesign --force --sign - --timestamp=none "$WORK/$NAME"
 
