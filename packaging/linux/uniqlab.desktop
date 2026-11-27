@@ -1,0 +1,12 @@
+[Desktop Entry]
+Type=Application
+Name=UniqLab
+GenericName=Video & Image Processing
+Comment=Local video and image uniquification with metadata presets
+Exec=UniqLab %F
+Icon=uniqlab
+Terminal=false
+Categories=AudioVideo;Video;Graphics;
+MimeType=video/mp4;video/quicktime;video/x-msvideo;image/jpeg;image/png;image/webp;
+StartupWMClass=UniqLab
+X-AppImage-Version=1.0.0

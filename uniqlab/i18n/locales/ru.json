@@ -1,0 +1,1218 @@
+{
+  "about": {
+    "license": "Свободное ПО с открытым исходным кодом по лицензии MIT.",
+    "privacy": "Вся обработка идёт локально на вашем компьютере: без аккаунтов, телеметрии, аналитики, отслеживания и облачной обработки. Сеть используется только для загрузки компонентов и проверки обновлений по вашей команде.",
+    "third_party": "Создано на Qt / PySide6 (LGPLv3) и Pillow. Шрифты интерфейса в Windows и Linux — Unbounded и Inter (SIL Open Font License). Подробности — в THIRD_PARTY_NOTICES.md."
+  },
+  "action": {
+    "again": "Запустить ещё раз",
+    "open_components": "Настроить компоненты…",
+    "start": "Начать обработку",
+    "stop": "Остановить"
+  },
+  "aspect": {
+    "classic": "Классика",
+    "instagram": "Instagram",
+    "instagram_feed": "Instagram Feed",
+    "large_format": "Большой формат",
+    "photo": "Фото",
+    "pinterest": "Pinterest",
+    "portrait": "Портрет",
+    "random": "Случайный кроп",
+    "tiktok": "TikTok/Reels",
+    "ultrawide": "Ultrawide",
+    "youtube": "YouTube"
+  },
+  "common": {
+    "close": "Закрыть",
+    "no": "Нет",
+    "yes": "Да"
+  },
+  "deps": {
+    "detail": {
+      "missing_encoders": "В этой сборке FFmpeg нет нужных кодировщиков: {names}.",
+      "not_found": "Не найден на этом компьютере.",
+      "not_runnable": "Файл не запускается: {error}",
+      "perl_missing": "ExifTool нужен Perl, но он не найден. Установите Perl через системный менеджер пакетов (в macOS он есть по умолчанию)."
+    },
+    "error": {
+      "cancelled": "Загрузка отменена.",
+      "checksum": "Контрольная сумма не совпала (ожидалось {expected}…, получено {actual}…). Файл удалён, ничего не установлено.",
+      "incompatible": "Установленный инструмент не прошёл проверку: {detail}",
+      "layout": "В архиве нет ожидаемого файла {name}.",
+      "network": "Ошибка сети: {error}. Проверьте подключение и повторите — загрузка продолжится с места остановки.",
+      "not_found": "Файл не найден на сервере: {url}",
+      "unexpected": "Непредвиденная ошибка: {error}",
+      "unsafe_archive": "Архив содержит небезопасный путь ({name}); установка остановлена."
+    },
+    "exiftool_missing": "ExifTool не установлен. Установите его в «Настройки → Компоненты».",
+    "line": {
+      "path": "Путь: {path}",
+      "update": "Доступно обновление: {version}",
+      "version": "Версия {version}"
+    },
+    "msg": {
+      "installed": "Установлено: {names}.",
+      "unsupported_platform": "Автоматическая загрузка недоступна для {platform}. Установите инструменты самостоятельно и укажите их здесь.",
+      "up_to_date": "Всё актуально.",
+      "update_check_failed": "Не удалось проверить обновления: {error}",
+      "updates_available": "Доступны обновления: {names}."
+    },
+    "progress": {
+      "check": "Проверяю {tool}…",
+      "download": "Загрузка {tool}: {done}",
+      "download_bytes": "Загрузка {tool}: {done} из {total} ({percent}%)",
+      "extract": "Распаковываю {tool}…",
+      "verify": "Проверяю контрольную сумму {tool}…"
+    },
+    "purpose": {
+      "exiftool": "Чтение, запись и проверка метаданных для пресетов.",
+      "ffmpeg": "Обработка видео (кодирование H.264/HEVC через libx264/libx265) и FFprobe."
+    },
+    "source": {
+      "managed": "Установлен UniqLab",
+      "manual": "Указан вручную",
+      "system": "Найден в системе"
+    },
+    "state": {
+      "broken": "не запускается",
+      "checking": "проверка…",
+      "incompatible": "несовместим",
+      "missing": "не найден",
+      "ok": "установлен"
+    }
+  },
+  "dialog": {
+    "choose_files": {
+      "photo": "Выберите фото",
+      "video": "Выберите видео"
+    },
+    "choose_folder": {
+      "photo": "Выберите папку с фото",
+      "video": "Выберите папку с видео"
+    },
+    "choose_output": "Выберите папку для сохранения",
+    "filter": {
+      "photo": "Фото",
+      "video": "Видео"
+    }
+  },
+  "error": {
+    "duration": "не удалось определить длительность",
+    "ffmpeg_failed": "FFmpeg завершился с ошибкой без подробностей.",
+    "no_video_output": "FFmpeg завершился, не записав ни одного видеокадра. Возможно, исходный файл закодирован необычно — попробуйте сначала перекодировать его в MP4.",
+    "startup_text": "Подробности записаны в:\n{path}",
+    "startup_title": "Ошибка запуска",
+    "stopped": "обработка остановлена пользователем"
+  },
+  "fgroup": {
+    "capture": "Съёмка",
+    "container": "Контейнер (FFmpeg)",
+    "description": "Описание",
+    "device": "Устройство",
+    "lens": "Объектив",
+    "per_shot": "Съёмка (у каждого кадра своя)",
+    "time": "Время",
+    "xmp": "XMP"
+  },
+  "field": {
+    "photo": {
+      "ExifIFD__ApertureValue": {
+        "label": "Значение диафрагмы f/"
+      },
+      "ExifIFD__ComponentsConfiguration": {
+        "label": "Компоненты",
+        "note": "Для JPEG: «1 2 3 0» = Y Cb Cr."
+      },
+      "ExifIFD__CompositeImage": {
+        "label": "Составное изображение",
+        "options": {
+          "0": "Неизвестно",
+          "1": "Не составное",
+          "2": "Составное (обычное)",
+          "3": "Составное (при съёмке)"
+        }
+      },
+      "ExifIFD__CreateDate": {
+        "label": "Дата оцифровки"
+      },
+      "ExifIFD__DateTimeOriginal": {
+        "label": "Дата съёмки"
+      },
+      "ExifIFD__DigitalZoomRatio": {
+        "label": "Цифровой зум"
+      },
+      "ExifIFD__ExifVersion": {
+        "label": "Версия EXIF"
+      },
+      "ExifIFD__ExposureMode": {
+        "label": "Режим экспозиции",
+        "options": {
+          "0": "Авто",
+          "1": "Ручной",
+          "2": "Брекетинг"
+        }
+      },
+      "ExifIFD__ExposureProgram": {
+        "label": "Программа экспозиции",
+        "options": {
+          "1": "Ручной",
+          "2": "Программа (авто)",
+          "3": "Приоритет диафрагмы",
+          "4": "Приоритет выдержки"
+        }
+      },
+      "ExifIFD__ExposureTime": {
+        "label": "Выдержка, с",
+        "note": "Меняется от кадра к кадру — в пресеты не входит, можно задать вручную."
+      },
+      "ExifIFD__FNumber": {
+        "label": "Диафрагма f/"
+      },
+      "ExifIFD__Flash": {
+        "label": "Вспышка",
+        "options": {
+          "0": "Без вспышки",
+          "16": "Выкл., не сработала",
+          "24": "Авто, не сработала",
+          "25": "Авто, сработала"
+        }
+      },
+      "ExifIFD__FlashpixVersion": {
+        "label": "Версия FlashPix"
+      },
+      "ExifIFD__FocalLength": {
+        "label": "Фокусное расстояние, мм"
+      },
+      "ExifIFD__FocalLengthIn35mmFormat": {
+        "label": "Эквивалент 35 мм"
+      },
+      "ExifIFD__ISO": {
+        "label": "ISO",
+        "note": "Меняется от кадра к кадру — в пресеты не входит, можно задать вручную."
+      },
+      "ExifIFD__LensInfo": {
+        "label": "Диапазон объектива",
+        "note": "4 числа: мин. и макс. фокусное, мин. и макс. диафрагма."
+      },
+      "ExifIFD__LensMake": {
+        "label": "Производитель объектива"
+      },
+      "ExifIFD__LensModel": {
+        "label": "Модель объектива"
+      },
+      "ExifIFD__MaxApertureValue": {
+        "label": "Макс. диафрагма f/"
+      },
+      "ExifIFD__MeteringMode": {
+        "label": "Замер экспозиции",
+        "options": {
+          "1": "Средний",
+          "2": "Центровзвешенный",
+          "3": "Точечный",
+          "5": "Матричный"
+        }
+      },
+      "ExifIFD__OffsetTime": {
+        "label": "Часовой пояс (изменение)"
+      },
+      "ExifIFD__OffsetTimeDigitized": {
+        "label": "Часовой пояс (оцифровка)"
+      },
+      "ExifIFD__OffsetTimeOriginal": {
+        "label": "Часовой пояс (съёмка)"
+      },
+      "ExifIFD__SceneCaptureType": {
+        "label": "Тип сцены",
+        "options": {
+          "0": "Стандарт",
+          "1": "Пейзаж",
+          "2": "Портрет",
+          "3": "Ночь"
+        }
+      },
+      "ExifIFD__SceneType": {
+        "label": "Источник сцены",
+        "options": {
+          "1": "Снято напрямую"
+        }
+      },
+      "ExifIFD__SensingMethod": {
+        "label": "Тип сенсора",
+        "options": {
+          "2": "Однокристальная цветная матрица"
+        }
+      },
+      "ExifIFD__SubSecTime": {
+        "label": "Миллисекунды (изменение)"
+      },
+      "ExifIFD__SubSecTimeDigitized": {
+        "label": "Миллисекунды (оцифровка)"
+      },
+      "ExifIFD__SubSecTimeOriginal": {
+        "label": "Миллисекунды (съёмка)"
+      },
+      "ExifIFD__WhiteBalance": {
+        "label": "Баланс белого",
+        "options": {
+          "0": "Авто",
+          "1": "Ручной"
+        }
+      },
+      "IFD0__Artist": {
+        "label": "Автор"
+      },
+      "IFD0__Copyright": {
+        "label": "Авторские права"
+      },
+      "IFD0__HostComputer": {
+        "label": "Устройство-хост",
+        "note": "Пишут iPhone начиная с iOS 13."
+      },
+      "IFD0__ImageDescription": {
+        "label": "Описание"
+      },
+      "IFD0__Make": {
+        "label": "Производитель"
+      },
+      "IFD0__Model": {
+        "label": "Модель"
+      },
+      "IFD0__ModifyDate": {
+        "label": "Дата изменения"
+      },
+      "IFD0__ResolutionUnit": {
+        "label": "Единица разрешения",
+        "options": {
+          "2": "дюймы",
+          "3": "см"
+        }
+      },
+      "IFD0__Software": {
+        "label": "ПО / прошивка"
+      },
+      "IFD0__XResolution": {
+        "label": "Разрешение X (dpi)"
+      },
+      "IFD0__YCbCrPositioning": {
+        "label": "YCbCr позиционирование",
+        "options": {
+          "1": "Центр",
+          "2": "Совмещено"
+        }
+      },
+      "IFD0__YResolution": {
+        "label": "Разрешение Y (dpi)"
+      },
+      "XMP-photoshop__DateCreated": {
+        "label": "Дата создания (Photoshop XMP)"
+      },
+      "XMP-x__XMPToolkit": {
+        "label": "XMP Toolkit",
+        "note": "Без этого поля ExifTool подставит своё имя «Image::ExifTool»."
+      },
+      "XMP-xmp__CreateDate": {
+        "label": "Дата создания (XMP)"
+      },
+      "XMP-xmp__CreatorTool": {
+        "label": "Программа-создатель (XMP)"
+      },
+      "XMP-xmp__ModifyDate": {
+        "label": "Дата изменения (XMP)"
+      }
+    },
+    "video": {
+      "FFMPEG__audio_rate": {
+        "label": "Частота звука",
+        "options": {
+          "44100": "44,1 кГц",
+          "48000": "48 кГц",
+          "keep": "Как в исходнике"
+        }
+      },
+      "FFMPEG__brand": {
+        "label": "Основной бренд (ftyp)",
+        "note": "Для MOV всегда «qt».",
+        "options": {
+          "isom": "isom",
+          "mp42": "mp42",
+          "qt": "qt (QuickTime)"
+        }
+      },
+      "FFMPEG__codec": {
+        "label": "Видеокодек",
+        "options": {
+          "h264": "H.264 (libx264)",
+          "hevc": "HEVC (libx265)"
+        }
+      },
+      "FFMPEG__compressor_name": {
+        "label": "Имя компрессора (MOV)"
+      },
+      "FFMPEG__container": {
+        "label": "Контейнер",
+        "options": {
+          "mov": "QuickTime MOV",
+          "mp4": "MP4"
+        }
+      },
+      "FFMPEG__encoder": {
+        "label": "Тег Encoder (©too)"
+      },
+      "FFMPEG__handler_audio": {
+        "label": "Обработчик аудиодорожки"
+      },
+      "FFMPEG__handler_video": {
+        "label": "Обработчик видеодорожки"
+      },
+      "FFMPEG__movie_timescale": {
+        "label": "Шкала времени фильма"
+      },
+      "FFMPEG__strip_sei": {
+        "label": "Убрать подпись x264/x265 из потока"
+      },
+      "FFMPEG__timecode": {
+        "label": "Дорожка таймкода (tmcd)",
+        "note": "Формат ЧЧ:ММ:СС:КК, пусто — без таймкода."
+      },
+      "FFMPEG__video_timescale": {
+        "label": "Шкала времени видеодорожки"
+      },
+      "ItemList__Comment": {
+        "label": "Комментарий"
+      },
+      "ItemList__Title": {
+        "label": "Название"
+      },
+      "Keys__AndroidCaptureFPS": {
+        "label": "Частота съёмки (com.android.capture.fps)"
+      },
+      "Keys__AndroidVersion": {
+        "label": "Версия Android (com.android.version)"
+      },
+      "Keys__CreationDate": {
+        "label": "Дата съёмки (com.apple.quicktime.creationdate)"
+      },
+      "Keys__Make": {
+        "label": "Производитель (com.apple.quicktime.make)"
+      },
+      "Keys__Model": {
+        "label": "Модель (com.apple.quicktime.model)"
+      },
+      "Keys__Software": {
+        "label": "ПО (com.apple.quicktime.software)"
+      },
+      "XMP-x__XMPToolkit": {
+        "label": "XMP Toolkit",
+        "note": "Без этого поля ExifTool подставит своё имя «Image::ExifTool»."
+      },
+      "XMP-xmpDM__StartTimecodeTimeValue": {
+        "label": "Начальный таймкод (XMP)"
+      },
+      "XMP-xmpDM__VideoFieldOrder": {
+        "label": "Порядок полей (XMP)",
+        "options": {
+          "Lower": "Нижнее поле",
+          "Progressive": "Прогрессивная",
+          "Upper": "Верхнее поле"
+        }
+      },
+      "XMP-xmpDM__VideoFrameRate": {
+        "label": "Частота кадров (XMP)"
+      },
+      "XMP-xmpDM__VideoPixelAspectRatio": {
+        "label": "Соотношение пикселя (XMP)"
+      },
+      "XMP-xmpMM__DocumentID": {
+        "label": "ID документа (XMP)"
+      },
+      "XMP-xmpMM__HistorySoftwareAgent": {
+        "label": "История: программа (XMP)",
+        "note": "Записывается как событие «saved» в xmpMM:History."
+      },
+      "XMP-xmpMM__InstanceID": {
+        "label": "ID экземпляра (XMP)"
+      },
+      "XMP-xmpMM__OriginalDocumentID": {
+        "label": "Исходный ID документа (XMP)"
+      },
+      "XMP-xmp__CreateDate": {
+        "label": "Дата создания (XMP)"
+      },
+      "XMP-xmp__CreatorTool": {
+        "label": "Программа-создатель (XMP)"
+      },
+      "XMP-xmp__MetadataDate": {
+        "label": "Дата метаданных (XMP)"
+      },
+      "XMP-xmp__ModifyDate": {
+        "label": "Дата изменения (XMP)"
+      }
+    }
+  },
+  "files": {
+    "choose": {
+      "photo": "Выбрать фото",
+      "video": "Выбрать видео"
+    },
+    "choose_tooltip": "Выбрать один или несколько файлов — список заменится",
+    "count": {
+      "photo": {
+        "few": "{n} фото",
+        "many": "{n} фото",
+        "one": "{n} фото",
+        "other": "{n} фото"
+      },
+      "video": {
+        "few": "{n} видео",
+        "many": "{n} видео",
+        "one": "{n} видео",
+        "other": "{n} видео"
+      }
+    },
+    "empty": {
+      "hint": "Выберите файлы или целую папку — исходники останутся на своих местах",
+      "photo": "Фото пока не выбраны",
+      "video": "Видео пока не выбраны"
+    },
+    "folder": "Папка",
+    "folder_tooltip": {
+      "photo": "Взять все фото из папки",
+      "video": "Взять все видео из папки"
+    },
+    "kinds": {
+      "photo": "JPEG, PNG или WebP",
+      "video": ".mp4, .mov или .avi"
+    },
+    "kinds_hint": {
+      "photo": "JPEG, PNG, WebP из любой папки",
+      "video": "Файлы .mp4, .mov, .avi из любой папки"
+    },
+    "none": {
+      "photo": "Нет фото",
+      "video": "Нет видео"
+    },
+    "origin": {
+      "folder": "из папки «{name}»",
+      "folders": {
+        "few": "из {n} папок",
+        "many": "из {n} папок",
+        "one": "из {n} папки",
+        "other": "из {n} папок"
+      },
+      "whole_folder": "вся папка «{name}»"
+    }
+  },
+  "format": {
+    "all": "Все форматы",
+    "center_tooltip": "Кадр {ratio} обрезается по центру",
+    "more": "Ещё",
+    "random_tooltip": "Кадр обрезается в случайном месте на 2–10%"
+  },
+  "group": {
+    "adobe_premiere": "Adobe Premiere Pro",
+    "apple_iphone": "Apple iPhone",
+    "capcut": "CapCut",
+    "custom": "Мои профили",
+    "davinci_resolve": "DaVinci Resolve",
+    "none": "Без пресета",
+    "samsung_galaxy": "Samsung Galaxy"
+  },
+  "header": {
+    "credit_tooltip": "Открыть профиль автора на GitHub: {url}"
+  },
+  "language": {
+    "accessible": "Язык интерфейса",
+    "tooltip": "Язык: {language}"
+  },
+  "limits": {
+    "apple_photo": {
+      "1": "Apple MakerNotes, данные глубины, HDR gain map и MPF-изображения — проприетарные и в пресет не входят.",
+      "2": "Выдержка, ISO, яркость и область фокуса у каждого кадра свои — пресет их не выдумывает (можно задать вручную).",
+      "3": "ColorSpace не берётся из пресета: он выставляется по ICC-профилю, который реально встроен в результат (у iPhone — Display P3 + «Uncalibrated»; у sRGB-файла будет «sRGB»).",
+      "4": "Настоящий iPhone по умолчанию снимает HEIC; пресет описывает JPEG-вариант («Наиболее совместимый»). PNG/WebP с камерным EXIF камера не создаёт."
+    },
+    "samsung_photo": {
+      "1": "Samsung MakerNotes, трейлер Samsung (Motion Photo, данные съёмки) и Ultra HDR gain map — проприетарные и не копируются.",
+      "2": "ImageUniqueID у Samsung — закодированный идентификатор модуля камеры с неизвестной структурой; в пресет не входит.",
+      "3": "Выдержка и ISO у каждого кадра свои — пресет их не выдумывает (можно задать вручную).",
+      "4": "ColorSpace выставляется по реально встроенному ICC-профилю, а не из пресета.",
+      "5": "Поле Model зависит от прошивки: свежие прошивки пишут «Galaxy S2x», старые — код SM-…"
+    }
+  },
+  "log": {
+    "already_running": "Обработка уже идёт. Дождитесь завершения текущей задачи.",
+    "components": "Компоненты: {summary}",
+    "error": "Ошибка: {name}: {error}",
+    "file_missing": "Файл не найден, пропускаю: {path}",
+    "folder_found": {
+      "photo": {
+        "few": "Папка: {path} — найдено фото: {n}",
+        "many": "Папка: {path} — найдено фото: {n}",
+        "one": "Папка: {path} — найдено фото: {n}",
+        "other": "Папка: {path} — найдено фото: {n}"
+      },
+      "video": {
+        "few": "Папка: {path} — найдено видео: {n}",
+        "many": "Папка: {path} — найдено видео: {n}",
+        "one": "Папка: {path} — найдено видео: {n}",
+        "other": "Папка: {path} — найдено видео: {n}"
+      }
+    },
+    "meta_skipped": "  метаданные: {key} не записано — {reason}",
+    "nothing_running": "Сейчас нет активной обработки.",
+    "output_dir": "Папка для сохранения: {path}",
+    "photo_content": " (содержимое — {format})",
+    "photo_done": "Готово: {name} | {width}×{height}",
+    "processing": "[{index}/{total}] Обрабатываю: {name}",
+    "profile": "Профиль метаданных: {name}",
+    "profile_applied": {
+      "photo": "Профиль метаданных (фото): {name}",
+      "video": "Профиль метаданных (видео): {name}"
+    },
+    "selected": {
+      "photo": {
+        "few": "Выбрано фото: {n}",
+        "many": "Выбрано фото: {n}",
+        "one": "Выбрано фото: {n}",
+        "other": "Выбрано фото: {n}"
+      },
+      "video": {
+        "few": "Выбрано видео: {n}",
+        "many": "Выбрано видео: {n}",
+        "one": "Выбрано видео: {n}",
+        "other": "Выбрано видео: {n}"
+      }
+    },
+    "skipped": {
+      "few": "Пропущено {n} неподходящих файла (нужны {kinds})",
+      "many": "Пропущено {n} неподходящих файлов (нужны {kinds})",
+      "one": "Пропущен {n} неподходящий файл (нужны {kinds})",
+      "other": "Пропущено {n} неподходящих файла (нужны {kinds})"
+    },
+    "start": {
+      "photo": {
+        "few": "Фото к обработке: {n}. Сохраняю в: {path}",
+        "many": "Фото к обработке: {n}. Сохраняю в: {path}",
+        "one": "Фото к обработке: {n}. Сохраняю в: {path}",
+        "other": "Фото к обработке: {n}. Сохраняю в: {path}"
+      },
+      "video": {
+        "few": "Видео к обработке: {n}. Сохраняю в: {path}",
+        "many": "Видео к обработке: {n}. Сохраняю в: {path}",
+        "one": "Видео к обработке: {n}. Сохраняю в: {path}",
+        "other": "Видео к обработке: {n}. Сохраняю в: {path}"
+      }
+    },
+    "stopped_by_user": "Обработка остановлена пользователем.",
+    "stopping": "Останавливаю обработку…",
+    "summary_done": "Завершено. Успешно обработано: {processed} из {total}.",
+    "summary_stopped": "Остановлено. Успешно обработано: {processed} из {total}.",
+    "video_done": "Готово: {name} | подрезка {start}s / {end}s",
+    "warning": "Внимание: {warning}"
+  },
+  "logs": {
+    "hide": "Скрыть",
+    "placeholder": "Здесь появятся события обработки",
+    "show": "Показать",
+    "title": "Логи",
+    "toggle_tooltip": "Показать или скрыть логи"
+  },
+  "meta": {
+    "configure": "Настроить…",
+    "configure_tooltip": "Пресеты устройств и редакторов, ручное редактирование метаданных",
+    "field": {
+      "neutral_detail": "метаданные исходника удаляются",
+      "no_exiftool": "ExifTool не установлен — запись метаданных невозможна"
+    },
+    "page": {
+      "add_field": "Добавить поле",
+      "apply": "Применить к обработке",
+      "badge": {
+        "active": "применяется сейчас",
+        "builtin": "встроенный пресет",
+        "custom": "свой профиль · на основе «{base}»",
+        "modified": "изменён (можно сбросить)",
+        "modified_short": "изменён",
+        "unavailable": "недоступен"
+      },
+      "change": {
+        "added": "добавлено поле «{field}» — задайте значение",
+        "imported": {
+          "few": "перенесено {n} поля",
+          "many": "перенесено {n} полей",
+          "one": "перенесено {n} поле",
+          "other": "перенесено {n} поля"
+        },
+        "removed": "поле {field} удалено",
+        "time": "настройки времени и исходных метаданных обновлены",
+        "value": "«{field}» = {value}"
+      },
+      "changed": "Изменено: {change}. Нажмите «Применить» или «Сохранить как свой…».",
+      "check_fields": "Отметьте поля в колонке «Можно перенести».",
+      "close_tooltip": "Вернуться к обработке без применения несохранённых изменений (Esc)",
+      "col": {
+        "field": "Поле",
+        "group": "Группа",
+        "status": "Статус",
+        "value": "Значение"
+      },
+      "datetime_placeholder": "ГГГГ:ММ:ДД ЧЧ:ММ:СС",
+      "delete": "Удалить профиль",
+      "delete_confirm": "Удалить профиль «{name}»?",
+      "discard_text": "В текущем профиле есть несохранённые изменения. Отменить их?",
+      "discard_title": "Несохранённые изменения",
+      "field_unsupported": "поле не поддерживается",
+      "fix_errors": "Исправьте поля с ошибками: {fields}",
+      "how": {
+        "1": "Поля EXIF/XMP/QuickTime пишет ExifTool, структуру контейнера (бренд, обработчики дорожек, таймкод, кодек) — FFmpeg.",
+        "2": "После записи каждый файл заново читается ExifTool и сверяется с профилем; расхождения попадают в лог.",
+        "3": "ColorSpace, размеры изображения и частота кадров берутся из настоящего файла, а не из пресета.",
+        "4": "GPS и другие данные о местоположении пресеты не пишут никогда.",
+        "5": "Перезапись тегов не воспроизводит полный «отпечаток» камеры или редактора: кодировщик, параметры потока и проприетарные структуры остаются другими.",
+        "title": "Как это работает"
+      },
+      "import": "Перенести отмеченные поля в профиль",
+      "import_hint": "Перенесённые значения заменят поля профиля; правьте их на вкладке «Поля пресета».",
+      "keep": {
+        "keep": "Сохранить и дополнить",
+        "remove": "Удалить"
+      },
+      "keep_label": "Исходные метаданные:",
+      "keep_tooltip": "«Сохранить» переносит метаданные исходника и поверх записывает поля профиля.",
+      "limitations": "Ограничения",
+      "not_imported": "Не перенесено: {items}",
+      "offset_label": "Пояс:",
+      "offset_placeholder": "как в системе",
+      "offset_rejected": "Часовой пояс: формат +ЧЧ:ММ — значение не принято.",
+      "offset_tooltip": "Часовой пояс в формате +03:00. Пусто — пояс этого компьютера.",
+      "pick_file": "Выбрать файл…",
+      "pick_title": "Файл для просмотра метаданных",
+      "profiles": "Профили",
+      "read_failed": "Не удалось прочитать метаданные: {error}",
+      "remove_field": "Удалить выбранное поле",
+      "reset": "Сбросить к исходному",
+      "reset_done": "Пресет восстановлен к исходному определению.",
+      "save_as": "Сохранить как свой…",
+      "save_default": "{name} (мой)",
+      "save_label": "Название профиля:",
+      "save_title": "Сохранить профиль",
+      "saved": "Сохранён профиль «{name}».",
+      "search": "Поиск по тегам",
+      "select_row": "Выберите строку поля, которое нужно удалить.",
+      "source_hint": "Откройте фото или видео, чтобы посмотреть его метаданные.",
+      "source_loaded": {
+        "few": "{name} — {n} тега",
+        "many": "{name} — {n} тегов",
+        "one": "{name} — {n} тег",
+        "other": "{name} — {n} тега"
+      },
+      "sources": "Источники",
+      "src": {
+        "importable": "Можно перенести",
+        "read_only": "только чтение",
+        "tag": "Тег (ExifTool)",
+        "value": "Значение",
+        "yes": "да"
+      },
+      "status": {
+        "computed": "вычисляется для каждого файла",
+        "container": "контейнер (FFmpeg)",
+        "error": "ошибка: {error}",
+        "unsupported": "не поддерживается — не будет записано",
+        "written": "записывается · {formats}"
+      },
+      "tab": {
+        "fields": "Поля пресета",
+        "manual": "Ручное редактирование",
+        "sources": "Источники и ограничения"
+      },
+      "time": {
+        "custom": "Указать вручную",
+        "now": "Время обработки",
+        "source": "Как в исходном файле"
+      },
+      "time_label": "Время:",
+      "time_rejected": "Время: формат ГГГГ:ММ:ДД ЧЧ:ММ:СС — значение не принято.",
+      "title": "Метаданные",
+      "value_rejected": "«{field}»: {error}. Значение не принято.",
+      "value_tooltip": "Двойной щелчок — изменить. Значения со знаком $ вычисляются для каждого файла."
+    },
+    "read_failed": "ExifTool не смог прочитать файл",
+    "skip": {
+      "format": "формат {format} не поддерживает это поле",
+      "invalid": "неверное значение: {error}",
+      "no_audio": "в файле нет звуковой дорожки",
+      "undefined": "значение не определено (нет данных о частоте кадров)",
+      "unsupported": "поле не поддерживается для этого типа файлов"
+    },
+    "time": {
+      "custom": "время задано вручную",
+      "custom_invalid": "ручное время не распознано — взято текущее",
+      "now": "текущее время",
+      "source_missing": "в исходнике нет даты — взято текущее время",
+      "source_tag": "время из исходника ({tag})",
+      "source_utc": "время из исходника (QuickTime, UTC)"
+    },
+    "verify": {
+      "absent": "нет",
+      "mismatch": " — расхождения: ",
+      "mismatch_item": "{key} ожидалось «{expected}», в файле «{actual}»",
+      "sei_no": "подписи нет",
+      "sei_yes": "подпись есть",
+      "skipped": {
+        "few": ", пропущено {n}",
+        "many": ", пропущено {n}",
+        "one": ", пропущено {n}",
+        "other": ", пропущено {n}"
+      },
+      "summary": "метаданные проверены: {passed}/{checked}",
+      "tmcd_no": "нет tmcd",
+      "tmcd_yes": "есть tmcd",
+      "unreadable": " — ФАЙЛ НЕ ЧИТАЕТСЯ: "
+    }
+  },
+  "mode": {
+    "photo": "Фото",
+    "video": "Видео"
+  },
+  "notice": {
+    "files_gone": {
+      "photo": "Выбранные фото больше не доступны. Выберите их заново.",
+      "video": "Выбранные видео больше не доступны. Выберите их заново."
+    },
+    "folder_empty": "В папке {path} нет {kinds}.",
+    "folder_unreadable": "Не удалось открыть папку {path}: {error}",
+    "no_matching_files": "Среди выбранных файлов нет {kinds}.",
+    "output_not_writable": "Нет прав на запись в папку: {path}. Выберите другую.",
+    "output_unavailable": "Папка для сохранения недоступна: {path}. Выберите её заново.",
+    "profile_needs_exiftool": "Профилю метаданных нужен ExifTool. Установите его в «Настройки → Компоненты» или выберите «Без пресета».",
+    "select_first": {
+      "photo": "Сначала выберите фото.",
+      "video": "Сначала выберите видео."
+    },
+    "select_output": "Сначала выберите папку для сохранения.",
+    "wait_mode": "Дождитесь окончания обработки, чтобы сменить режим."
+  },
+  "noun": {
+    "photo": {
+      "few": "фото",
+      "many": "фото",
+      "one": "фото",
+      "other": "фото"
+    },
+    "video": {
+      "few": "видео",
+      "many": "видео",
+      "one": "видео",
+      "other": "видео"
+    }
+  },
+  "offer": {
+    "details": "FFmpeg нужен для видео, ExifTool — для пресетов метаданных. UniqLab может сейчас скачать официальные сборки (контрольные суммы проверяются, права администратора не нужны) или вы сделаете это позже в «Настройки → Компоненты».",
+    "later": "Позже",
+    "text": "UniqLab не нашёл: {names}.",
+    "title": "Нужны компоненты"
+  },
+  "output": {
+    "change": "Изменить",
+    "choose": "Выбрать…",
+    "none": "Папка не выбрана"
+  },
+  "panel": {
+    "caption": {
+      "checking_tools": "Проверяю компоненты",
+      "done": {
+        "photo": {
+          "few": "Готово! Все {n} фото сохранены",
+          "many": "Готово! Все {n} фото сохранены",
+          "one": "Готово! Фото сохранено",
+          "other": "Готово! Все {n} фото сохранены"
+        },
+        "video": {
+          "few": "Готово! Все {n} видео сохранены",
+          "many": "Готово! Все {n} видео сохранены",
+          "one": "Готово! Видео сохранено",
+          "other": "Готово! Все {n} видео сохранены"
+        }
+      },
+      "failed": "Не обработано: {n} из {total}",
+      "none": {
+        "photo": "Фото не выбраны",
+        "video": "Видео не выбраны"
+      },
+      "position": "{position} из {total} · {name}",
+      "ready": {
+        "photo": {
+          "few": "фото к обработке · {option}",
+          "many": "фото к обработке · {option}",
+          "one": "фото к обработке · {option}",
+          "other": "фото к обработке · {option}"
+        },
+        "video": {
+          "few": "видео к обработке · {option}",
+          "many": "видео к обработке · {option}",
+          "one": "видео к обработке · {option}",
+          "other": "видео к обработке · {option}"
+        }
+      },
+      "selected": {
+        "photo": {
+          "few": "фото выбраны",
+          "many": "фото выбрано",
+          "one": "фото выбрано",
+          "other": "фото выбраны"
+        },
+        "video": {
+          "few": "видео выбраны",
+          "many": "видео выбрано",
+          "one": "видео выбрано",
+          "other": "видео выбраны"
+        }
+      },
+      "starting": "Запускаю…",
+      "stopped": "Обработка остановлена",
+      "stopped_saved": "Остановлено — готовые файлы сохранены",
+      "video_unavailable": "Обработка видео недоступна",
+      "waiting_ffmpeg": "Дожидаюсь завершения FFmpeg…",
+      "warnings": "Файлы сохранены, но проверка метаданных нашла расхождения"
+    },
+    "chip": {
+      "almost": "Почти готово",
+      "check_settings": "Проверьте настройки",
+      "errors": "Есть ошибки",
+      "finished": "Завершено",
+      "no_ffmpeg": "Нет FFmpeg",
+      "ready": "Готово к запуску",
+      "running": "Идёт обработка",
+      "stopped": "Остановлено",
+      "stopping": "Останавливаю",
+      "waiting": "Ожидание",
+      "warnings": "Есть замечания"
+    },
+    "hint": {
+      "saving": "Сохраняю в {path}",
+      "step1": {
+        "photo": "Шаг 01 — выберите фото или папку",
+        "video": "Шаг 01 — выберите видео или папку"
+      },
+      "step2": "Шаг 02 — выберите папку для сохранения",
+      "will_save": "Сохраню в {path}"
+    },
+    "notice": {
+      "install_ffmpeg": "Для видео нужен FFmpeg. Откройте «Настройки → Компоненты», чтобы скачать его или указать установленный. Режим фото работает и без него."
+    },
+    "open_folder": "Открыть папку",
+    "stat": {
+      "done": "Готово",
+      "errors": "Ошибки",
+      "time": "Время"
+    },
+    "title": "Обработка"
+  },
+  "photo": {
+    "error": {
+      "animated": "анимированные изображения не поддерживаются",
+      "cmyk": "CMYK-изображения не поддерживаются (цвета исказились бы)",
+      "content": "содержимое файла — {format}, а не JPEG/PNG/WebP",
+      "corrupt": "файл повреждён или не является изображением: {error}",
+      "format": "формат не поддерживается (нужны JPEG, PNG или WebP)",
+      "mode": "режим {mode} не поддерживается (например, 16-битные PNG)"
+    },
+    "intensity": {
+      "light": "Лёгкая",
+      "medium": "Средняя",
+      "strong": "Сильная"
+    },
+    "intensity_caption": {
+      "light": "Почти без изменений картинки",
+      "medium": "Незаметно глазу",
+      "strong": "Больше отличий, вид прежний"
+    }
+  },
+  "preset": {
+    "photo-galaxy-s24": {
+      "evidence": {
+        "1": {
+          "detail": "ExifTool 13.63: Make «samsung», Model «Galaxy S24», ExifVersion 0220, OffsetTime/OffsetTimeOriginal, SubSecTime×3, 5,4 мм f/1.8, 35 мм = 23. Файл позже открывали в Picasa — поля Picasa (Artist, dc:Creator) не использованы.",
+          "title": "JPEG с Galaxy S24, прошивка S921BXXS9BYH2 (Wikimedia Commons)"
+        },
+        "2": {
+          "detail": "Все: ExifVersion 0220, ExposureProgram 2, Software S921BXX…; основная камера 540/100 мм f/1.8.",
+          "title": "25 неотредактированных JPEG из «Taken with Samsung Galaxy S24» (Commons API)"
+        },
+        "3": {
+          "detail": "SM-F711N (One UI 6) и SM-T970 (One UI 5): та же структура — Software = номер прошивки, ExifVersion 0220, OffsetTime/OffsetTimeOriginal, SubSecTime×3, ImageUniqueID.",
+          "title": "Снимки Samsung One UI 5/6 (immich test-assets)"
+        }
+      },
+      "name": "Galaxy S24 · S921BXXS9BYH2 · JPEG",
+      "summary": "Основная камера 23 мм (5,4 мм f/1.8), прошивка SM-S921B."
+    },
+    "photo-galaxy-s25-ultra": {
+      "evidence": {
+        "1": {
+          "detail": "ExifTool 13.63: Make «samsung», Model «Galaxy S25 Ultra», ExifVersion 0220, OffsetTime и OffsetTimeOriginal (без Digitized), SubSecTime×3, 6,3 мм f/1.7, 35 мм = 23, MeteringMode 2, ColorSpace Uncalibrated + ICC «DCI-P3 D65 Gamut with sRGB Transfer», Ultra HDR gain map.",
+          "title": "Оригинальный JPEG с Galaxy S25 Ultra, прошивка S938BXXS7BYKS (Wikimedia Commons)"
+        },
+        "2": {
+          "detail": "54 из 56: Software S938BXXS7BYKS, ExifVersion 0220; основная камера 630/100 мм f/170/100, MaxAperture 1.53 APEX.",
+          "title": "56 неотредактированных JPEG из «Taken with Samsung Galaxy S25 Ultra» (Commons API)"
+        }
+      },
+      "name": "Galaxy S25 Ultra · S938BXXS7BYKS · JPEG",
+      "summary": "Основная камера 23 мм (6,3 мм f/1.7), прошивка SM-S938B (One UI 8)."
+    },
+    "photo-iphone-15-pro": {
+      "evidence": {
+        "1": {
+          "detail": "Полный разбор ExifTool 13.63: Make, Model, Software, HostComputer, ExifVersion 0232, OffsetTime×3, LensMake/LensModel/LensInfo, FocalLength 6.765, FNumber 1.78, 35 мм = 24, CompositeImage 2, XMPToolkit «XMP Core 6.0.0», xmp:CreatorTool = версия iOS, ICC Display P3.",
+          "title": "Оригинальный JPEG с iPhone 15 Pro, iOS 18.6.2 (Wikimedia Commons)"
+        },
+        "2": {
+          "detail": "Во всех: ExifVersion 0232, ExposureProgram 2, SensingMethod 2, SceneType 1, Flash 16, MeteringMode 5 (47 из 50), основная камера 251773/37217 мм и f/1244236/699009. SubSecTime обычно отсутствует, есть SubSecTimeOriginal/Digitized.",
+          "title": "50 неотредактированных JPEG из «Taken with iPhone 15 Pro» (Commons API)"
+        }
+      },
+      "name": "iPhone 15 Pro · iOS 18.6.2 · JPEG",
+      "summary": "Основная камера 24 мм (6,765 мм f/1.78), снимок в режиме «Наиболее совместимый»."
+    },
+    "photo-iphone-16-pro": {
+      "evidence": {
+        "1": {
+          "detail": "ExifTool 13.63: HostComputer iPhone 16 Pro, ExifVersion 0232, OffsetTime×3, LensModel «iPhone 16 Pro back triple camera 6.765mm f/1.78», LensInfo 2.22–15.66 мм f/1.78–2.8, CompositeImage 2.",
+          "title": "Оригинальный JPEG с iPhone 16 Pro, iOS 18.1.1 (Wikimedia Commons)"
+        },
+        "2": {
+          "detail": "Все: Software 18.1.1, ExifVersion 0232, MeteringMode 5, Flash 16, ExposureProgram 2.",
+          "title": "31 неотредактированный JPEG из «Taken with iPhone 16 Pro» (Commons API)"
+        }
+      },
+      "name": "iPhone 16 Pro · iOS 18.1.1 · JPEG",
+      "summary": "Основная камера 24 мм (6,765 мм f/1.78), снимок в режиме «Наиболее совместимый»."
+    },
+    "photo-none": {
+      "name": "Без метаданных",
+      "summary": "Метаданные исходника удаляются; сохраняются только ориентация и ICC-профиль, без них картинка исказится."
+    },
+    "video-capcut": {
+      "evidence": {
+        "1": {
+          "detail": "Проверены форум ExifTool, GitHub, VideoHelp и общий веб-поиск — ни одного экспорта CapCut с выводом ExifTool/ffprobe/MediaInfo. Выдумывать значения запрещено, поэтому пресет недоступен.",
+          "title": "Поиск образцов и дампов (ноябрь 2026)"
+        }
+      },
+      "limit": {
+        "1": "Чтобы получить пресет: экспортируйте ролик из CapCut, откройте его на вкладке «Ручное редактирование» и сохраните поддерживаемые поля как свой профиль."
+      },
+      "name": "CapCut — нет проверенных данных",
+      "summary": "Пресет не создан: не удалось найти ни одного проверяемого экспорта CapCut с разбором метаданных."
+    },
+    "video-galaxy-android14": {
+      "evidence": {
+        "1": {
+          "detail": "ExifTool 13.63: MajorBrand mp42 (совместимые isom, mp42), TimeScale 10000, видеодорожка 90000, Keys:AndroidVersion 14, обработчики «VideoHandle»/«SoundHandle», hvc1, AAC 48 000 Гц, модель SM-F711N только в проприетарном атоме Samsung «smta».",
+          "title": "MP4 камеры Samsung SM-F711N, One UI 6 (видео Motion Photo из immich test-assets)"
+        },
+        "2": {
+          "detail": "AOSP пишет com.android.version и (не всегда) com.android.capture.fps; ExifTool показывает их как AndroidVersion / AndroidCaptureFPS. У S21 Ultra: Android Version 12, Capture FPS 60.",
+          "title": "Ключи Android в MP4 (AOSP MPEG4Writer) и примеры Galaxy S21/S23 Ultra"
+        },
+        "3": {
+          "detail": "Та же AOSP-структура (SoundHandle, MetaHandle, Keys AndroidMake/Model/CaptureFPS) — подтверждает общий формат Android.",
+          "title": "Для сравнения: MP4 Pixel 6 Pro (immich test-assets, waterfall.mp4)"
+        }
+      },
+      "limit": {
+        "1": "Модель Samsung хранится только в проприетарном атоме «smta» — не воспроизводится, поэтому в стандартных тегах модели нет (как и у настоящих файлов Samsung).",
+        "2": "Список совместимых брендов формирует FFmpeg (mp42, iso2, …), а не isom+mp42 как у Samsung.",
+        "3": "com.android.capture.fps пишется не всеми версиями — добавьте вручную при необходимости.",
+        "4": "Разрешение, частота кадров и битрейт — от вашего видео. GPS (©xyz) не пишется."
+      },
+      "name": "Galaxy (камера Samsung) · Android 14 · HEVC (MP4)",
+      "summary": "MP4 от камеры Samsung: бренд mp42, HEVC, AAC 48 кГц, ключ com.android.version."
+    },
+    "video-iphone-12-pro": {
+      "evidence": {
+        "1": {
+          "detail": "ExifTool 13.63: MajorBrand «qt», Keys Make/Model/Software/CreationDate (с часовым поясом), TimeScale 600, обработчики «Core Media Video/Audio/Metadata», HandlerVendorID Apple, CompressorID hvc1 / CompressorName «HEVC», AAC 44 100 Гц, плюс 3 дорожки метаданных Apple (mebx).",
+          "title": "Оригинальное видео iPhone 12 Pro, iOS 17.3.1 (immich test-assets, train.mov)"
+        }
+      },
+      "limit": {
+        "1": "Дорожки метаданных Apple (mebx: стабилизация, ориентация объектива) и ключи дорожки LensModel/FocalLength — приватные структуры Apple, не воспроизводятся.",
+        "2": "FFmpeg пишет VendorID «FFmpeg» в описании кадра и обработчик данных «DataHandler» вместо «Core Media Data Handler»; HandlerVendorID «Apple» не выставляется — это ограничения муксера, ручную правку двоичных структур не делаем.",
+        "3": "Оригинал снят в 10 бит HLG (BT.2020); результат — 8 бит SDR. Разрешение и частота кадров — от вашего видео.",
+        "4": "GPS и com.apple.quicktime.location.* не пишутся."
+      },
+      "name": "iPhone 12 Pro · iOS 17.3.1 · HEVC (MOV)",
+      "summary": "Запись камерой iPhone: QuickTime MOV, HEVC, AAC 44,1 кГц, ключи com.apple.quicktime.*."
+    },
+    "video-none": {
+      "evidence": {
+        "1": {
+          "detail": "ffmpeg -map_metadata -1, libx264, MP4.",
+          "title": "Исходное поведение приложения"
+        }
+      },
+      "name": "Без метаданных (как раньше)",
+      "summary": "Прежнее поведение: все метаданные исходника удаляются, файл MP4, H.264."
+    },
+    "video-premiere-2024": {
+      "evidence": {
+        "1": {
+          "detail": "x:xmptk «Adobe XMP Core 9.0-c001 79.c0204b2, 2023/02/09-06:26:14», xmp:CreatorTool «Adobe Premiere Pro 2024.0 (Windows)», CreateDate/MetadataDate/ModifyDate с часовым поясом, xmpMM:InstanceID «xmp.iid:…», OriginalDocumentID «xmp.did:…», History (saved/created, softwareAgent), xmpDM:videoFrameRate «60.000000», videoFieldOrder Progressive, videoPixelAspectRatio 1/1, startTimecode 00:00:00:00.",
+          "title": "XMP-пакет экспорта Premiere Pro 2024.0 (Windows), GitHub"
+        },
+        "2": {
+          "detail": "Подтверждает, что XMP Premiere попадает в экспортированные файлы и читается ExifTool.",
+          "title": "Premiere встраивает данные проекта в метаданные экспортированных MP4 (Creative COW)"
+        }
+      },
+      "limit": {
+        "1": "Образец — XMP-пакет экспорта (WebM-сайдкар). Расположение XMP внутри MP4 задаёт ExifTool (стандартный uuid/XMP_ бокс).",
+        "2": "Ingredients/Pantry (пути к исходникам проекта) и полная история правок не воспроизводятся.",
+        "3": "Имена обработчиков дорожек и бренд MP4 у Premiere не подтверждены образцом — остаются как у FFmpeg.",
+        "4": "Кодирует libx264 (подпись x264 из потока удаляется), а не кодировщик Adobe/MainConcept — параметры потока отличаются."
+      },
+      "name": "Premiere Pro 2024.0 (Windows) · H.264 MP4",
+      "summary": "Экспорт из Premiere Pro: XMP-пакет Adobe с CreatorTool, ID документа, историей и параметрами видео."
+    },
+    "video-resolve-free": {
+      "evidence": {
+        "1": {
+          "detail": "По выдержке из поиска: Encoder «Blackmagic Design DaVinci Resolve», дорожка таймкода tmcd. Страница закрыта (HTTP 403).",
+          "title": "Экспорт Resolve 17 в ExifTool (форум Grass Valley)"
+        }
+      },
+      "limit": {
+        "1": "Первоисточник доступен только по выдержке поиска — значения стоит сверить с вашим настоящим экспортом.",
+        "2": "Имена обработчиков дорожек Resolve не подтверждены — остаются как у FFmpeg."
+      },
+      "name": "DaVinci Resolve (бесплатная) · H.264 MP4",
+      "summary": "Рендер бесплатной версии Resolve: тег Encoder «Blackmagic Design DaVinci Resolve» и таймкод 01:00:00:00."
+    },
+    "video-resolve-studio": {
+      "evidence": {
+        "1": {
+          "detail": "«encoder: Blackmagic Design DaVinci Resolve Studio» — по выдержке из поиска; страница форума закрыта для автоматического чтения (HTTP 403), поэтому доказательная база умеренная.",
+          "title": "Вывод ffprobe для MP4, отрендеренного в Resolve Studio (форум Blackmagic Design)"
+        },
+        "2": {
+          "detail": "По выдержке из поиска: Encoder «Blackmagic Design DaVinci Resolve», дорожка таймкода tmcd. Страница закрыта (HTTP 403).",
+          "title": "Экспорт Resolve 17 в ExifTool (форум Grass Valley)"
+        }
+      },
+      "limit": {
+        "1": "Первоисточники доступны только по выдержкам поиска — значения стоит сверить с вашим настоящим экспортом.",
+        "2": "Начальный таймкод 01:00:00:00 — стандарт таймлайна Resolve; если вы его меняли, поправьте поле.",
+        "3": "Имена обработчиков дорожек Resolve не подтверждены — остаются как у FFmpeg."
+      },
+      "name": "DaVinci Resolve Studio · H.264 MP4",
+      "summary": "Рендер Resolve Studio: тег Encoder «Blackmagic Design DaVinci Resolve Studio» и таймкод 01:00:00:00."
+    }
+  },
+  "recap": {
+    "folder": "Папка",
+    "folder_none": "не выбрана",
+    "format": "Формат",
+    "metadata": "Метаданные",
+    "metadata_removed": "удаляются",
+    "not_selected": "не выбраны",
+    "processing": "Обработка",
+    "sources": "Исходники",
+    "sources_value": {
+      "photo": {
+        "few": "{n} фото · {size}",
+        "many": "{n} фото · {size}",
+        "one": "{n} фото · {size}",
+        "other": "{n} фото · {size}"
+      },
+      "video": {
+        "few": "{n} видео · {size}",
+        "many": "{n} видео · {size}",
+        "one": "{n} видео · {size}",
+        "other": "{n} видео · {size}"
+      }
+    }
+  },
+  "section": {
+    "export": "Экспорт",
+    "files": {
+      "photo": "Фото",
+      "video": "Видео"
+    },
+    "format": "Формат",
+    "metadata": "Метаданные",
+    "processing": "Обработка"
+  },
+  "settings": {
+    "about": "О программе",
+    "all_installed": "Все компоненты установлены",
+    "cancel": "Отменить загрузку",
+    "check_updates": "Проверить обновления",
+    "check_updates_tooltip": "Запрашивает у официальных страниц загрузки новые сборки. Кроме обычного веб-запроса ничего не передаётся.",
+    "checking_updates": "Проверяю обновления…",
+    "choose_path": "Указать файл…",
+    "choose_title": "Выберите исполняемый файл {tool}",
+    "choose_tooltip": "Использовать уже установленный исполняемый файл {tool}",
+    "clear_path": "Сбросить",
+    "clear_tooltip": "Забыть выбранный вручную файл и определить автоматически",
+    "close_tooltip": "Вернуться к обработке (Esc)",
+    "components": "Компоненты",
+    "components_intro": "UniqLab не содержит FFmpeg и ExifTool. Он использует уже установленные на компьютере копии, выбранный вами файл или официальные сборки, которые скачивает по вашей команде в свою папку данных.",
+    "components_notes": "Загрузки берутся из закреплённых официальных релизов и сверяются с контрольными суммами SHA-256. После установки всё работает без интернета. Сборки FFmpeg распространяются по лицензии GPL, ExifTool — по Perl Artistic License / GPL.",
+    "install_all": "Скачать и установить всё",
+    "install_updates": {
+      "few": "Установить {n} обновления",
+      "many": "Установить {n} обновлений",
+      "one": "Установить {n} обновление",
+      "other": "Установить {n} обновления"
+    },
+    "missing_hint": "Не хватает: {names}. Нажмите «Скачать и установить всё» или укажите установленный файл.",
+    "platform": "Система: {platform}",
+    "recheck": "Проверить снова",
+    "title": "Настройки"
+  },
+  "status": {
+    "checking": "Проверка",
+    "installing": "Установка",
+    "partial": "Готов частично",
+    "ready": "Готов к работе",
+    "setup": "Нужна настройка",
+    "tooltip": "Компоненты и настройки"
+  },
+  "theme": {
+    "accessible": "Тема оформления",
+    "auto": "Авто",
+    "auto_system": "Авто (как в системе)",
+    "dark": "Тёмная",
+    "light": "Светлая",
+    "tooltip": "Тема: {theme} — нажмите, чтобы сменить"
+  },
+  "unit": {
+    "gb": "ГБ",
+    "kb": "КБ",
+    "mb": "МБ"
+  },
+  "validate": {
+    "allowed": "допустимо: {values}",
+    "bool": "ожидается 0 или 1",
+    "datetime": "формат ГГГГ:ММ:ДД ЧЧ:ММ:СС[+ЧЧ:ММ]",
+    "empty": "пустое значение",
+    "int": "ожидается целое число",
+    "lensinfo": "4 положительных числа через пробел",
+    "max_length": {
+      "few": "не длиннее {n} символов",
+      "many": "не длиннее {n} символов",
+      "one": "не длиннее {n} символа",
+      "other": "не длиннее {n} символов"
+    },
+    "number": "ожидается число",
+    "offset": "формат +ЧЧ:ММ",
+    "range": "диапазон {minimum}–{maximum}",
+    "subsec": "от 1 до 6 цифр",
+    "timecode": "формат ЧЧ:ММ:СС:КК",
+    "version": "4 цифры, например 0232"
+  }
+}

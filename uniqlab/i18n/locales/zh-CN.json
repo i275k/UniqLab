@@ -1,0 +1,1143 @@
+{
+  "about": {
+    "license": "基于 MIT 许可证的自由开源软件。",
+    "privacy": "所有处理都在您的电脑本地完成：无账户、无遥测、无分析、无跟踪、无云端处理。仅在您下载组件或检查更新时使用网络。",
+    "third_party": "基于 Qt / PySide6（LGPLv3）和 Pillow 构建。Windows 和 Linux 上的界面字体为 Unbounded 和 Inter（SIL Open Font License）。详见 THIRD_PARTY_NOTICES.md。"
+  },
+  "action": {
+    "again": "再次运行",
+    "open_components": "设置组件…",
+    "start": "开始处理",
+    "stop": "停止"
+  },
+  "aspect": {
+    "classic": "经典",
+    "instagram": "Instagram",
+    "instagram_feed": "Instagram 动态",
+    "large_format": "大画幅",
+    "photo": "照片",
+    "pinterest": "Pinterest",
+    "portrait": "竖幅",
+    "random": "随机裁剪",
+    "tiktok": "TikTok/Reels",
+    "ultrawide": "超宽",
+    "youtube": "YouTube"
+  },
+  "common": {
+    "close": "关闭",
+    "no": "否",
+    "yes": "是"
+  },
+  "deps": {
+    "detail": {
+      "missing_encoders": "此 FFmpeg 版本缺少所需编码器：{names}。",
+      "not_found": "在此电脑上未找到。",
+      "not_runnable": "文件无法运行：{error}",
+      "perl_missing": "ExifTool 需要 Perl，但未找到。请通过系统包管理器安装 Perl（macOS 已预装）。"
+    },
+    "error": {
+      "cancelled": "下载已取消。",
+      "checksum": "校验和不匹配（预期 {expected}…，实际 {actual}…）。文件已删除，未安装任何内容。",
+      "incompatible": "安装的工具未通过检查：{detail}",
+      "layout": "压缩包中没有预期的文件 {name}。",
+      "network": "网络错误：{error}。请检查网络后重试 — 下载会从中断处继续。",
+      "not_found": "服务器上找不到下载文件：{url}",
+      "unexpected": "意外错误：{error}",
+      "unsafe_archive": "压缩包包含不安全的路径（{name}），已停止安装。"
+    },
+    "exiftool_missing": "未安装 ExifTool。请在“设置 → 组件”中安装。",
+    "line": {
+      "path": "路径：{path}",
+      "update": "有可用更新：{version}",
+      "version": "版本 {version}"
+    },
+    "msg": {
+      "installed": "已安装：{names}。",
+      "unsupported_platform": "{platform} 不支持自动下载。请自行安装这些工具并在此处指定。",
+      "up_to_date": "全部为最新版本。",
+      "update_check_failed": "无法检查更新：{error}",
+      "updates_available": "有可用更新：{names}。"
+    },
+    "progress": {
+      "check": "正在检查 {tool}…",
+      "download": "正在下载 {tool}：{done}",
+      "download_bytes": "正在下载 {tool}：{done} / {total}（{percent}%）",
+      "extract": "正在解压 {tool}…",
+      "verify": "正在校验 {tool} 的校验和…"
+    },
+    "purpose": {
+      "exiftool": "为预设读取、写入并校验元数据。",
+      "ffmpeg": "视频处理（通过 libx264/libx265 进行 H.264/HEVC 编码）及 FFprobe。"
+    },
+    "source": {
+      "managed": "由 UniqLab 安装",
+      "manual": "手动指定",
+      "system": "在系统中找到"
+    },
+    "state": {
+      "broken": "无法运行",
+      "checking": "检查中…",
+      "incompatible": "不兼容",
+      "missing": "未找到",
+      "ok": "已安装"
+    }
+  },
+  "dialog": {
+    "choose_files": {
+      "photo": "选择照片",
+      "video": "选择视频"
+    },
+    "choose_folder": {
+      "photo": "选择包含照片的文件夹",
+      "video": "选择包含视频的文件夹"
+    },
+    "choose_output": "选择输出文件夹",
+    "filter": {
+      "photo": "照片",
+      "video": "视频"
+    }
+  },
+  "error": {
+    "duration": "无法确定时长",
+    "ffmpeg_failed": "FFmpeg 运行失败，没有详细信息。",
+    "no_video_output": "FFmpeg 已结束，但没有写入任何视频帧。源文件可能使用了不常见的编码，请先将其转换为 MP4 再试。",
+    "startup_text": "详细信息已写入：\n{path}",
+    "startup_title": "启动错误",
+    "stopped": "处理已被用户停止"
+  },
+  "fgroup": {
+    "capture": "拍摄",
+    "container": "容器（FFmpeg）",
+    "description": "描述",
+    "device": "设备",
+    "lens": "镜头",
+    "per_shot": "拍摄（每张不同）",
+    "time": "时间",
+    "xmp": "XMP"
+  },
+  "field": {
+    "photo": {
+      "ExifIFD__ApertureValue": {
+        "label": "光圈值 f/"
+      },
+      "ExifIFD__ComponentsConfiguration": {
+        "label": "分量配置",
+        "note": "JPEG：“1 2 3 0” = Y Cb Cr。"
+      },
+      "ExifIFD__CompositeImage": {
+        "label": "合成图像",
+        "options": {
+          "0": "未知",
+          "1": "非合成",
+          "2": "一般合成",
+          "3": "拍摄时合成"
+        }
+      },
+      "ExifIFD__CreateDate": {
+        "label": "数字化日期"
+      },
+      "ExifIFD__DateTimeOriginal": {
+        "label": "拍摄日期"
+      },
+      "ExifIFD__DigitalZoomRatio": {
+        "label": "数码变焦"
+      },
+      "ExifIFD__ExifVersion": {
+        "label": "EXIF 版本"
+      },
+      "ExifIFD__ExposureMode": {
+        "label": "曝光模式",
+        "options": {
+          "0": "自动",
+          "1": "手动",
+          "2": "包围曝光"
+        }
+      },
+      "ExifIFD__ExposureProgram": {
+        "label": "曝光程序",
+        "options": {
+          "1": "手动",
+          "2": "程序（自动）",
+          "3": "光圈优先",
+          "4": "快门优先"
+        }
+      },
+      "ExifIFD__ExposureTime": {
+        "label": "曝光时间（秒）",
+        "note": "每张照片都不同 — 不包含在预设中，可手动设置。"
+      },
+      "ExifIFD__FNumber": {
+        "label": "光圈 f/"
+      },
+      "ExifIFD__Flash": {
+        "label": "闪光灯",
+        "options": {
+          "0": "无闪光灯",
+          "16": "关闭，未闪光",
+          "24": "自动，未闪光",
+          "25": "自动，已闪光"
+        }
+      },
+      "ExifIFD__FlashpixVersion": {
+        "label": "FlashPix 版本"
+      },
+      "ExifIFD__FocalLength": {
+        "label": "焦距（mm）"
+      },
+      "ExifIFD__FocalLengthIn35mmFormat": {
+        "label": "35 mm 等效焦距"
+      },
+      "ExifIFD__ISO": {
+        "label": "ISO",
+        "note": "每张照片都不同 — 不包含在预设中，可手动设置。"
+      },
+      "ExifIFD__LensInfo": {
+        "label": "镜头范围",
+        "note": "4 个数：最小和最大焦距、最小和最大光圈。"
+      },
+      "ExifIFD__LensMake": {
+        "label": "镜头制造商"
+      },
+      "ExifIFD__LensModel": {
+        "label": "镜头型号"
+      },
+      "ExifIFD__MaxApertureValue": {
+        "label": "最大光圈 f/"
+      },
+      "ExifIFD__MeteringMode": {
+        "label": "测光模式",
+        "options": {
+          "1": "平均",
+          "2": "中央重点",
+          "3": "点测光",
+          "5": "多区评价"
+        }
+      },
+      "ExifIFD__OffsetTime": {
+        "label": "时区（修改）"
+      },
+      "ExifIFD__OffsetTimeDigitized": {
+        "label": "时区（数字化）"
+      },
+      "ExifIFD__OffsetTimeOriginal": {
+        "label": "时区（拍摄）"
+      },
+      "ExifIFD__SceneCaptureType": {
+        "label": "场景拍摄类型",
+        "options": {
+          "0": "标准",
+          "1": "风景",
+          "2": "人像",
+          "3": "夜景"
+        }
+      },
+      "ExifIFD__SceneType": {
+        "label": "场景类型",
+        "options": {
+          "1": "直接拍摄"
+        }
+      },
+      "ExifIFD__SensingMethod": {
+        "label": "感光方式",
+        "options": {
+          "2": "单芯片彩色区域传感器"
+        }
+      },
+      "ExifIFD__SubSecTime": {
+        "label": "毫秒（修改）"
+      },
+      "ExifIFD__SubSecTimeDigitized": {
+        "label": "毫秒（数字化）"
+      },
+      "ExifIFD__SubSecTimeOriginal": {
+        "label": "毫秒（拍摄）"
+      },
+      "ExifIFD__WhiteBalance": {
+        "label": "白平衡",
+        "options": {
+          "0": "自动",
+          "1": "手动"
+        }
+      },
+      "IFD0__Artist": {
+        "label": "作者"
+      },
+      "IFD0__Copyright": {
+        "label": "版权"
+      },
+      "IFD0__HostComputer": {
+        "label": "主机设备",
+        "note": "iPhone 自 iOS 13 起写入。"
+      },
+      "IFD0__ImageDescription": {
+        "label": "描述"
+      },
+      "IFD0__Make": {
+        "label": "制造商"
+      },
+      "IFD0__Model": {
+        "label": "型号"
+      },
+      "IFD0__ModifyDate": {
+        "label": "修改日期"
+      },
+      "IFD0__ResolutionUnit": {
+        "label": "分辨率单位",
+        "options": {
+          "2": "英寸",
+          "3": "厘米"
+        }
+      },
+      "IFD0__Software": {
+        "label": "软件 / 固件"
+      },
+      "IFD0__XResolution": {
+        "label": "X 分辨率（dpi）"
+      },
+      "IFD0__YCbCrPositioning": {
+        "label": "YCbCr 定位",
+        "options": {
+          "1": "居中",
+          "2": "共址"
+        }
+      },
+      "IFD0__YResolution": {
+        "label": "Y 分辨率（dpi）"
+      },
+      "XMP-photoshop__DateCreated": {
+        "label": "创建日期（Photoshop XMP）"
+      },
+      "XMP-x__XMPToolkit": {
+        "label": "XMP Toolkit",
+        "note": "若无此字段，ExifTool 会写入自己的名称“Image::ExifTool”。"
+      },
+      "XMP-xmp__CreateDate": {
+        "label": "创建日期（XMP）"
+      },
+      "XMP-xmp__CreatorTool": {
+        "label": "创建工具（XMP）"
+      },
+      "XMP-xmp__ModifyDate": {
+        "label": "修改日期（XMP）"
+      }
+    },
+    "video": {
+      "FFMPEG__audio_rate": {
+        "label": "音频采样率",
+        "options": {
+          "44100": "44.1 kHz",
+          "48000": "48 kHz",
+          "keep": "与源文件相同"
+        }
+      },
+      "FFMPEG__brand": {
+        "label": "主品牌（ftyp）",
+        "note": "MOV 始终为“qt”。",
+        "options": {
+          "isom": "isom",
+          "mp42": "mp42",
+          "qt": "qt (QuickTime)"
+        }
+      },
+      "FFMPEG__codec": {
+        "label": "视频编解码器",
+        "options": {
+          "h264": "H.264 (libx264)",
+          "hevc": "HEVC (libx265)"
+        }
+      },
+      "FFMPEG__compressor_name": {
+        "label": "压缩器名称（MOV）"
+      },
+      "FFMPEG__container": {
+        "label": "容器",
+        "options": {
+          "mov": "QuickTime MOV",
+          "mp4": "MP4"
+        }
+      },
+      "FFMPEG__encoder": {
+        "label": "Encoder 标签（©too）"
+      },
+      "FFMPEG__handler_audio": {
+        "label": "音频轨道处理器"
+      },
+      "FFMPEG__handler_video": {
+        "label": "视频轨道处理器"
+      },
+      "FFMPEG__movie_timescale": {
+        "label": "影片时间刻度"
+      },
+      "FFMPEG__strip_sei": {
+        "label": "从码流中移除 x264/x265 签名"
+      },
+      "FFMPEG__timecode": {
+        "label": "时间码轨道（tmcd）",
+        "note": "格式 HH:MM:SS:FF；留空表示无时间码。"
+      },
+      "FFMPEG__video_timescale": {
+        "label": "视频轨道时间刻度"
+      },
+      "ItemList__Comment": {
+        "label": "注释"
+      },
+      "ItemList__Title": {
+        "label": "标题"
+      },
+      "Keys__AndroidCaptureFPS": {
+        "label": "拍摄帧率（com.android.capture.fps）"
+      },
+      "Keys__AndroidVersion": {
+        "label": "Android 版本（com.android.version）"
+      },
+      "Keys__CreationDate": {
+        "label": "拍摄日期（com.apple.quicktime.creationdate）"
+      },
+      "Keys__Make": {
+        "label": "制造商（com.apple.quicktime.make）"
+      },
+      "Keys__Model": {
+        "label": "型号（com.apple.quicktime.model）"
+      },
+      "Keys__Software": {
+        "label": "软件（com.apple.quicktime.software）"
+      },
+      "XMP-x__XMPToolkit": {
+        "label": "XMP Toolkit",
+        "note": "若无此字段，ExifTool 会写入自己的名称“Image::ExifTool”。"
+      },
+      "XMP-xmpDM__StartTimecodeTimeValue": {
+        "label": "起始时间码（XMP）"
+      },
+      "XMP-xmpDM__VideoFieldOrder": {
+        "label": "场序（XMP）",
+        "options": {
+          "Lower": "下场优先",
+          "Progressive": "逐行",
+          "Upper": "上场优先"
+        }
+      },
+      "XMP-xmpDM__VideoFrameRate": {
+        "label": "帧率（XMP）"
+      },
+      "XMP-xmpDM__VideoPixelAspectRatio": {
+        "label": "像素宽高比（XMP）"
+      },
+      "XMP-xmpMM__DocumentID": {
+        "label": "文档 ID（XMP）"
+      },
+      "XMP-xmpMM__HistorySoftwareAgent": {
+        "label": "历史：软件（XMP）",
+        "note": "作为“saved”事件写入 xmpMM:History。"
+      },
+      "XMP-xmpMM__InstanceID": {
+        "label": "实例 ID（XMP）"
+      },
+      "XMP-xmpMM__OriginalDocumentID": {
+        "label": "原始文档 ID（XMP）"
+      },
+      "XMP-xmp__CreateDate": {
+        "label": "创建日期（XMP）"
+      },
+      "XMP-xmp__CreatorTool": {
+        "label": "创建工具（XMP）"
+      },
+      "XMP-xmp__MetadataDate": {
+        "label": "元数据日期（XMP）"
+      },
+      "XMP-xmp__ModifyDate": {
+        "label": "修改日期（XMP）"
+      }
+    }
+  },
+  "files": {
+    "choose": {
+      "photo": "选择照片",
+      "video": "选择视频"
+    },
+    "choose_tooltip": "选择一个或多个文件 — 将替换当前列表",
+    "count": {
+      "photo": {
+        "other": "{n} 张照片"
+      },
+      "video": {
+        "other": "{n} 个视频"
+      }
+    },
+    "empty": {
+      "hint": "选择文件或整个文件夹 — 原始文件保持不动",
+      "photo": "尚未选择照片",
+      "video": "尚未选择视频"
+    },
+    "folder": "文件夹",
+    "folder_tooltip": {
+      "photo": "导入文件夹中的所有照片",
+      "video": "导入文件夹中的所有视频"
+    },
+    "kinds": {
+      "photo": "JPEG、PNG 或 WebP",
+      "video": ".mp4、.mov 或 .avi"
+    },
+    "kinds_hint": {
+      "photo": "任意文件夹中的 JPEG、PNG、WebP",
+      "video": "任意文件夹中的 .mp4、.mov、.avi 文件"
+    },
+    "none": {
+      "photo": "无照片",
+      "video": "无视频"
+    },
+    "origin": {
+      "folder": "来自文件夹“{name}”",
+      "folders": {
+        "other": "来自 {n} 个文件夹"
+      },
+      "whole_folder": "整个文件夹“{name}”"
+    }
+  },
+  "format": {
+    "all": "所有比例",
+    "center_tooltip": "画面按 {ratio} 居中裁剪",
+    "more": "更多",
+    "random_tooltip": "在随机位置裁掉画面的 2–10%"
+  },
+  "group": {
+    "adobe_premiere": "Adobe Premiere Pro",
+    "apple_iphone": "Apple iPhone",
+    "capcut": "CapCut",
+    "custom": "我的配置",
+    "davinci_resolve": "DaVinci Resolve",
+    "none": "无预设",
+    "samsung_galaxy": "Samsung Galaxy"
+  },
+  "header": {
+    "credit_tooltip": "打开作者的 GitHub 主页：{url}"
+  },
+  "language": {
+    "accessible": "界面语言",
+    "tooltip": "语言：{language}"
+  },
+  "limits": {
+    "apple_photo": {
+      "1": "Apple MakerNotes、深度数据、HDR 增益图和 MPF 图像属于专有数据，不包含在预设中。",
+      "2": "曝光时间、ISO、亮度和对焦区域每张都不同 — 预设不会编造（可手动设置）。",
+      "3": "ColorSpace 不取自预设：它取决于结果中实际嵌入的 ICC 配置文件（iPhone 为 Display P3 + “Uncalibrated”；sRGB 文件为“sRGB”）。",
+      "4": "真实的 iPhone 默认拍摄 HEIC；该预设描述的是 JPEG 版本（“兼容性最佳”）。相机不会生成带相机 EXIF 的 PNG/WebP。"
+    },
+    "samsung_photo": {
+      "1": "Samsung MakerNotes、三星尾部数据（Motion Photo、拍摄数据）和 Ultra HDR 增益图属于专有数据，不会复制。",
+      "2": "三星的 ImageUniqueID 是结构未知的相机模组编码标识；不包含在预设中。",
+      "3": "曝光时间和 ISO 每张都不同 — 预设不会编造（可手动设置）。",
+      "4": "ColorSpace 取决于实际嵌入的 ICC 配置文件，而不是预设。",
+      "5": "Model 字段取决于固件：新固件写入“Galaxy S2x”，旧固件写入 SM-… 代码。"
+    }
+  },
+  "log": {
+    "already_running": "处理已在进行中。请等待当前任务完成。",
+    "components": "组件：{summary}",
+    "error": "错误：{name}：{error}",
+    "file_missing": "找不到文件，已跳过：{path}",
+    "folder_found": {
+      "photo": {
+        "other": "文件夹：{path} — 找到 {n} 张照片"
+      },
+      "video": {
+        "other": "文件夹：{path} — 找到 {n} 个视频"
+      }
+    },
+    "meta_skipped": "  元数据：{key} 未写入 — {reason}",
+    "nothing_running": "当前没有正在进行的处理。",
+    "output_dir": "输出文件夹：{path}",
+    "photo_content": "（内容为 {format}）",
+    "photo_done": "完成：{name} | {width}×{height}",
+    "processing": "[{index}/{total}] 正在处理：{name}",
+    "profile": "元数据配置：{name}",
+    "profile_applied": {
+      "photo": "元数据配置（照片）：{name}",
+      "video": "元数据配置（视频）：{name}"
+    },
+    "selected": {
+      "photo": {
+        "other": "已选择 {n} 张照片"
+      },
+      "video": {
+        "other": "已选择 {n} 个视频"
+      }
+    },
+    "skipped": {
+      "other": "已跳过 {n} 个不合适的文件（需要 {kinds}）"
+    },
+    "start": {
+      "photo": {
+        "other": "待处理照片：{n}。保存到：{path}"
+      },
+      "video": {
+        "other": "待处理视频：{n}。保存到：{path}"
+      }
+    },
+    "stopped_by_user": "处理已被用户停止。",
+    "stopping": "正在停止处理…",
+    "summary_done": "已完成。成功处理：{processed} / {total}。",
+    "summary_stopped": "已停止。成功处理：{processed} / {total}。",
+    "video_done": "完成：{name} | 裁去首尾 {start}s / {end}s",
+    "warning": "注意：{warning}"
+  },
+  "logs": {
+    "hide": "隐藏",
+    "placeholder": "处理事件将显示在这里",
+    "show": "显示",
+    "title": "日志",
+    "toggle_tooltip": "显示或隐藏日志"
+  },
+  "meta": {
+    "configure": "配置…",
+    "configure_tooltip": "设备和编辑软件预设，手动编辑元数据",
+    "field": {
+      "neutral_detail": "删除源文件元数据",
+      "no_exiftool": "未安装 ExifTool — 无法写入元数据"
+    },
+    "page": {
+      "add_field": "添加字段",
+      "apply": "应用到处理",
+      "badge": {
+        "active": "当前已应用",
+        "builtin": "内置预设",
+        "custom": "自定义配置 · 基于“{base}”",
+        "modified": "已修改（可恢复）",
+        "modified_short": "已修改",
+        "unavailable": "不可用"
+      },
+      "change": {
+        "added": "已添加字段“{field}” — 请设置其值",
+        "imported": {
+          "other": "已导入 {n} 个字段"
+        },
+        "removed": "已删除字段 {field}",
+        "time": "时间和源元数据设置已更新",
+        "value": "“{field}” = {value}"
+      },
+      "changed": "已更改：{change}。请点击“应用”或“另存为我的配置…”。",
+      "check_fields": "请在“可导入”列中勾选字段。",
+      "close_tooltip": "返回处理界面，不应用未保存的更改（Esc）",
+      "col": {
+        "field": "字段",
+        "group": "分组",
+        "status": "状态",
+        "value": "值"
+      },
+      "datetime_placeholder": "YYYY:MM:DD HH:MM:SS",
+      "delete": "删除配置",
+      "delete_confirm": "删除配置“{name}”？",
+      "discard_text": "当前配置有未保存的更改。要放弃吗？",
+      "discard_title": "未保存的更改",
+      "field_unsupported": "不支持该字段",
+      "fix_errors": "请修正有错误的字段：{fields}",
+      "how": {
+        "1": "EXIF/XMP/QuickTime 字段由 ExifTool 写入；容器结构（品牌、轨道处理器、时间码、编解码器）由 FFmpeg 写入。",
+        "2": "写入后，每个文件都会用 ExifTool 重新读取并与配置比对；不一致之处会记录到日志。",
+        "3": "ColorSpace、图像尺寸和帧率取自实际文件，而不是预设。",
+        "4": "预设绝不会写入 GPS 或任何其他位置信息。",
+        "5": "重写标签并不能复现相机或编辑软件的完整“指纹”：编码器、码流参数和专有结构仍然不同。",
+        "title": "工作原理"
+      },
+      "import": "将勾选的字段导入配置",
+      "import_hint": "导入的值将替换配置中的字段；可在“预设字段”选项卡中编辑。",
+      "keep": {
+        "keep": "保留并补充",
+        "remove": "删除"
+      },
+      "keep_label": "源元数据：",
+      "keep_tooltip": "“保留”会复制源文件的元数据，并在其上写入配置中的字段。",
+      "limitations": "限制",
+      "not_imported": "未导入：{items}",
+      "offset_label": "时区：",
+      "offset_placeholder": "系统默认",
+      "offset_rejected": "时区：格式为 +HH:MM — 值未被接受。",
+      "offset_tooltip": "时区格式为 +03:00。留空表示使用此电脑的时区。",
+      "pick_file": "选择文件…",
+      "pick_title": "要查看元数据的文件",
+      "profiles": "配置",
+      "read_failed": "无法读取元数据：{error}",
+      "remove_field": "删除所选字段",
+      "reset": "恢复原始",
+      "reset_done": "预设已恢复为原始定义。",
+      "save_as": "另存为我的配置…",
+      "save_default": "{name}（我的）",
+      "save_label": "配置名称：",
+      "save_title": "保存配置",
+      "saved": "已保存配置“{name}”。",
+      "search": "搜索标签",
+      "select_row": "请选择要删除的字段所在行。",
+      "source_hint": "打开照片或视频以查看其元数据。",
+      "source_loaded": {
+        "other": "{name} — {n} 个标签"
+      },
+      "sources": "来源",
+      "src": {
+        "importable": "可导入",
+        "read_only": "只读",
+        "tag": "标签（ExifTool）",
+        "value": "值",
+        "yes": "是"
+      },
+      "status": {
+        "computed": "针对每个文件计算",
+        "container": "容器（FFmpeg）",
+        "error": "错误：{error}",
+        "unsupported": "不支持 — 不会写入",
+        "written": "将写入 · {formats}"
+      },
+      "tab": {
+        "fields": "预设字段",
+        "manual": "手动编辑",
+        "sources": "来源与限制"
+      },
+      "time": {
+        "custom": "手动设置",
+        "now": "处理时间",
+        "source": "与源文件相同"
+      },
+      "time_label": "时间：",
+      "time_rejected": "时间：格式为 YYYY:MM:DD HH:MM:SS — 值未被接受。",
+      "title": "元数据",
+      "value_rejected": "“{field}”：{error}。值未被接受。",
+      "value_tooltip": "双击编辑。带 $ 的值会针对每个文件计算。"
+    },
+    "read_failed": "ExifTool 无法读取该文件",
+    "skip": {
+      "format": "{format} 不支持该字段",
+      "invalid": "无效值：{error}",
+      "no_audio": "文件没有音轨",
+      "undefined": "值未定义（缺少帧率数据）",
+      "unsupported": "此文件类型不支持该字段"
+    },
+    "time": {
+      "custom": "手动设置的时间",
+      "custom_invalid": "无法识别手动时间 — 已使用当前时间",
+      "now": "当前时间",
+      "source_missing": "源文件没有日期 — 已使用当前时间",
+      "source_tag": "源文件中的时间（{tag}）",
+      "source_utc": "源文件中的时间（QuickTime，UTC）"
+    },
+    "verify": {
+      "absent": "无",
+      "mismatch": " — 不一致：",
+      "mismatch_item": "{key} 预期为“{expected}”，文件中为“{actual}”",
+      "sei_no": "无签名",
+      "sei_yes": "有签名",
+      "skipped": {
+        "other": "，跳过 {n} 项"
+      },
+      "summary": "元数据已校验：{passed}/{checked}",
+      "tmcd_no": "无 tmcd",
+      "tmcd_yes": "有 tmcd",
+      "unreadable": " — 文件无法读取："
+    }
+  },
+  "mode": {
+    "photo": "照片",
+    "video": "视频"
+  },
+  "notice": {
+    "files_gone": {
+      "photo": "所选照片已不可用。请重新选择。",
+      "video": "所选视频已不可用。请重新选择。"
+    },
+    "folder_empty": "文件夹 {path} 中没有 {kinds} 文件。",
+    "folder_unreadable": "无法打开文件夹 {path}：{error}",
+    "no_matching_files": "所选文件中没有 {kinds}。",
+    "output_not_writable": "没有写入 {path} 的权限。请选择其他文件夹。",
+    "output_unavailable": "输出文件夹不可用：{path}。请重新选择。",
+    "profile_needs_exiftool": "此元数据配置需要 ExifTool。请在“设置 → 组件”中安装，或选择“无预设”。",
+    "select_first": {
+      "photo": "请先选择照片。",
+      "video": "请先选择视频。"
+    },
+    "select_output": "请先选择输出文件夹。",
+    "wait_mode": "请等待处理完成后再切换模式。"
+  },
+  "noun": {
+    "photo": {
+      "other": "照片"
+    },
+    "video": {
+      "other": "视频"
+    }
+  },
+  "offer": {
+    "details": "处理视频需要 FFmpeg，元数据预设需要 ExifTool。UniqLab 可以立即下载官方版本（会校验校验和，无需管理员权限），您也可以稍后在“设置 → 组件”中完成。",
+    "later": "稍后",
+    "text": "UniqLab 未找到：{names}。",
+    "title": "需要组件"
+  },
+  "output": {
+    "change": "更改",
+    "choose": "选择…",
+    "none": "未选择文件夹"
+  },
+  "panel": {
+    "caption": {
+      "checking_tools": "正在检查组件",
+      "done": {
+        "photo": {
+          "other": "完成！{n} 张照片已全部保存"
+        },
+        "video": {
+          "other": "完成！{n} 个视频已全部保存"
+        }
+      },
+      "failed": "未处理：{n} / {total}",
+      "none": {
+        "photo": "未选择照片",
+        "video": "未选择视频"
+      },
+      "position": "第 {position} 个，共 {total} 个 · {name}",
+      "ready": {
+        "photo": {
+          "other": "张照片待处理 · {option}"
+        },
+        "video": {
+          "other": "个视频待处理 · {option}"
+        }
+      },
+      "selected": {
+        "photo": {
+          "other": "张照片已选择"
+        },
+        "video": {
+          "other": "个视频已选择"
+        }
+      },
+      "starting": "正在启动…",
+      "stopped": "处理已停止",
+      "stopped_saved": "已停止 — 已完成的文件已保存",
+      "video_unavailable": "无法处理视频",
+      "waiting_ffmpeg": "等待 FFmpeg 结束…",
+      "warnings": "文件已保存，但元数据校验发现不一致"
+    },
+    "chip": {
+      "almost": "即将就绪",
+      "check_settings": "请检查设置",
+      "errors": "有错误",
+      "finished": "已完成",
+      "no_ffmpeg": "缺少 FFmpeg",
+      "ready": "可以开始",
+      "running": "处理中",
+      "stopped": "已停止",
+      "stopping": "正在停止",
+      "waiting": "等待中",
+      "warnings": "有警告"
+    },
+    "hint": {
+      "saving": "正在保存到 {path}",
+      "step1": {
+        "photo": "第 01 步 — 选择照片或文件夹",
+        "video": "第 01 步 — 选择视频或文件夹"
+      },
+      "step2": "第 02 步 — 选择输出文件夹",
+      "will_save": "将保存到 {path}"
+    },
+    "notice": {
+      "install_ffmpeg": "处理视频需要 FFmpeg。打开“设置 → 组件”下载，或指定已安装的副本。照片模式无需 FFmpeg。"
+    },
+    "open_folder": "打开文件夹",
+    "stat": {
+      "done": "完成",
+      "errors": "错误",
+      "time": "用时"
+    },
+    "title": "处理"
+  },
+  "photo": {
+    "error": {
+      "animated": "不支持动画图像",
+      "cmyk": "不支持 CMYK 图像（颜色会失真）",
+      "content": "文件内容为 {format}，而不是 JPEG/PNG/WebP",
+      "corrupt": "文件已损坏或不是图像：{error}",
+      "format": "不支持的格式（需要 JPEG、PNG 或 WebP）",
+      "mode": "不支持 {mode} 模式（例如 16 位 PNG）"
+    },
+    "intensity": {
+      "light": "轻度",
+      "medium": "中度",
+      "strong": "强度"
+    },
+    "intensity_caption": {
+      "light": "画面几乎不变",
+      "medium": "肉眼不可察觉",
+      "strong": "差异更大，观感不变"
+    }
+  },
+  "preset": {
+    "photo-galaxy-s24": {
+      "evidence": {
+        "1": {
+          "detail": "ExifTool 13.63：Make“samsung”、Model“Galaxy S24”、ExifVersion 0220、OffsetTime/OffsetTimeOriginal、SubSecTime×3、5.4 mm f/1.8、35 mm = 23。该文件后来曾在 Picasa 中打开 — 未使用 Picasa 字段（Artist、dc:Creator）。",
+          "title": "Galaxy S24 JPEG，固件 S921BXXS9BYH2（Wikimedia Commons）"
+        },
+        "2": {
+          "detail": "全部：ExifVersion 0220、ExposureProgram 2、Software S921BXX…；主摄 540/100 mm f/1.8。",
+          "title": "“Taken with Samsung Galaxy S24”中的 25 张未编辑 JPEG（Commons API）"
+        },
+        "3": {
+          "detail": "SM-F711N（One UI 6）和 SM-T970（One UI 5）：结构相同 — Software = 固件编号、ExifVersion 0220、OffsetTime/OffsetTimeOriginal、SubSecTime×3、ImageUniqueID。",
+          "title": "Samsung One UI 5/6 照片（immich test-assets）"
+        }
+      },
+      "name": "Galaxy S24 · S921BXXS9BYH2 · JPEG",
+      "summary": "23 mm 主摄（5.4 mm f/1.8），SM-S921B 固件。"
+    },
+    "photo-galaxy-s25-ultra": {
+      "evidence": {
+        "1": {
+          "detail": "ExifTool 13.63：Make“samsung”、Model“Galaxy S25 Ultra”、ExifVersion 0220、OffsetTime 和 OffsetTimeOriginal（无 Digitized）、SubSecTime×3、6.3 mm f/1.7、35 mm = 23、MeteringMode 2、ColorSpace Uncalibrated + ICC“DCI-P3 D65 Gamut with sRGB Transfer”、Ultra HDR 增益图。",
+          "title": "Galaxy S25 Ultra 原始 JPEG，固件 S938BXXS7BYKS（Wikimedia Commons）"
+        },
+        "2": {
+          "detail": "56 张中 54 张：Software S938BXXS7BYKS、ExifVersion 0220；主摄 630/100 mm f/170/100，MaxAperture 1.53 APEX。",
+          "title": "“Taken with Samsung Galaxy S25 Ultra”中的 56 张未编辑 JPEG（Commons API）"
+        }
+      },
+      "name": "Galaxy S25 Ultra · S938BXXS7BYKS · JPEG",
+      "summary": "23 mm 主摄（6.3 mm f/1.7），SM-S938B 固件（One UI 8）。"
+    },
+    "photo-iphone-15-pro": {
+      "evidence": {
+        "1": {
+          "detail": "ExifTool 13.63 完整解析：Make、Model、Software、HostComputer、ExifVersion 0232、OffsetTime×3、LensMake/LensModel/LensInfo、FocalLength 6.765、FNumber 1.78、35 mm = 24、CompositeImage 2、XMPToolkit“XMP Core 6.0.0”、xmp:CreatorTool = iOS 版本、ICC Display P3。",
+          "title": "iPhone 15 Pro（iOS 18.6.2）原始 JPEG（Wikimedia Commons）"
+        },
+        "2": {
+          "detail": "全部：ExifVersion 0232、ExposureProgram 2、SensingMethod 2、SceneType 1、Flash 16、MeteringMode 5（50 张中 47 张），主摄 251773/37217 mm、f/1244236/699009。通常没有 SubSecTime，但有 SubSecTimeOriginal/Digitized。",
+          "title": "“Taken with iPhone 15 Pro”中的 50 张未编辑 JPEG（Commons API）"
+        }
+      },
+      "name": "iPhone 15 Pro · iOS 18.6.2 · JPEG",
+      "summary": "24 mm 主摄（6.765 mm f/1.78），以“兼容性最佳”模式拍摄。"
+    },
+    "photo-iphone-16-pro": {
+      "evidence": {
+        "1": {
+          "detail": "ExifTool 13.63：HostComputer iPhone 16 Pro、ExifVersion 0232、OffsetTime×3、LensModel“iPhone 16 Pro back triple camera 6.765mm f/1.78”、LensInfo 2.22–15.66 mm f/1.78–2.8、CompositeImage 2。",
+          "title": "iPhone 16 Pro（iOS 18.1.1）原始 JPEG（Wikimedia Commons）"
+        },
+        "2": {
+          "detail": "全部：Software 18.1.1、ExifVersion 0232、MeteringMode 5、Flash 16、ExposureProgram 2。",
+          "title": "“Taken with iPhone 16 Pro”中的 31 张未编辑 JPEG（Commons API）"
+        }
+      },
+      "name": "iPhone 16 Pro · iOS 18.1.1 · JPEG",
+      "summary": "24 mm 主摄（6.765 mm f/1.78），以“兼容性最佳”模式拍摄。"
+    },
+    "photo-none": {
+      "name": "无元数据",
+      "summary": "删除源文件元数据；仅保留方向和 ICC 配置文件，否则画面会失真。"
+    },
+    "video-capcut": {
+      "evidence": {
+        "1": {
+          "detail": "已检查 ExifTool 论坛、GitHub、VideoHelp 和通用网页搜索 — 没有任何附带 ExifTool/ffprobe/MediaInfo 输出的 CapCut 导出。不允许编造数值，因此该预设不可用。",
+          "title": "样本与转储搜索（2026 年 11 月）"
+        }
+      },
+      "limit": {
+        "1": "获取预设的方法：从 CapCut 导出一段视频，在“手动编辑”选项卡中打开，并将支持的字段保存为您自己的配置。"
+      },
+      "name": "CapCut — 无经验证的数据",
+      "summary": "未创建预设：找不到任何附有元数据解析、可验证的 CapCut 导出文件。"
+    },
+    "video-galaxy-android14": {
+      "evidence": {
+        "1": {
+          "detail": "ExifTool 13.63：MajorBrand mp42（兼容 isom、mp42）、TimeScale 10000、视频轨道 90000、Keys:AndroidVersion 14、处理器“VideoHandle”/“SoundHandle”、hvc1、AAC 48000 Hz，SM-F711N 型号仅存在于三星专有的“smta”原子中。",
+          "title": "三星 SM-F711N 相机拍摄的 MP4，One UI 6（immich test-assets 中的 Motion Photo 视频）"
+        },
+        "2": {
+          "detail": "AOSP 会写入 com.android.version，以及（不一定）com.android.capture.fps；ExifTool 显示为 AndroidVersion / AndroidCaptureFPS。S21 Ultra：Android Version 12、Capture FPS 60。",
+          "title": "MP4 中的 Android 键（AOSP MPEG4Writer）及 Galaxy S21/S23 Ultra 示例"
+        },
+        "3": {
+          "detail": "相同的 AOSP 结构（SoundHandle、MetaHandle、Keys AndroidMake/Model/CaptureFPS）— 证实了 Android 的通用格式。",
+          "title": "对比：Pixel 6 Pro 的 MP4（immich test-assets，waterfall.mp4）"
+        }
+      },
+      "limit": {
+        "1": "三星型号仅保存在专有的“smta”原子中，无法复现，因此标准标签中没有型号（与真实三星文件相同）。",
+        "2": "兼容品牌列表由 FFmpeg 生成（mp42、iso2…），而不是三星的 isom+mp42。",
+        "3": "并非所有版本都会写入 com.android.capture.fps — 如有需要请手动添加。",
+        "4": "分辨率、帧率和码率取自您的视频。不写入 GPS（©xyz）。"
+      },
+      "name": "Galaxy（三星相机）· Android 14 · HEVC (MP4)",
+      "summary": "三星相机录制的 MP4：mp42 品牌、HEVC、AAC 48 kHz、com.android.version 键。"
+    },
+    "video-iphone-12-pro": {
+      "evidence": {
+        "1": {
+          "detail": "ExifTool 13.63：MajorBrand“qt”、Keys Make/Model/Software/CreationDate（含时区）、TimeScale 600、处理器“Core Media Video/Audio/Metadata”、HandlerVendorID Apple、CompressorID hvc1 / CompressorName“HEVC”、AAC 44100 Hz，另有 3 条 Apple 元数据轨道（mebx）。",
+          "title": "iPhone 12 Pro（iOS 17.3.1）原始视频（immich test-assets，train.mov）"
+        }
+      },
+      "limit": {
+        "1": "Apple 元数据轨道（mebx：防抖、镜头方向）以及轨道键 LensModel/FocalLength 属于 Apple 私有结构，无法复现。",
+        "2": "FFmpeg 会在样本描述中写入 VendorID“FFmpeg”，数据处理器写为“DataHandler”而非“Core Media Data Handler”；不会设置 HandlerVendorID“Apple” — 这些是封装器的限制，我们不手动修改二进制结构。",
+        "3": "原视频为 10 位 HLG（BT.2020）；结果为 8 位 SDR。分辨率和帧率取自您的视频。",
+        "4": "不写入 GPS 和 com.apple.quicktime.location.*。"
+      },
+      "name": "iPhone 12 Pro · iOS 17.3.1 · HEVC (MOV)",
+      "summary": "iPhone 相机录制：QuickTime MOV、HEVC、AAC 44.1 kHz、com.apple.quicktime.* 键。"
+    },
+    "video-none": {
+      "evidence": {
+        "1": {
+          "detail": "ffmpeg -map_metadata -1, libx264, MP4.",
+          "title": "应用的原始行为"
+        }
+      },
+      "name": "无元数据（经典）",
+      "summary": "经典行为：删除源文件的全部元数据；MP4 文件，H.264。"
+    },
+    "video-premiere-2024": {
+      "evidence": {
+        "1": {
+          "detail": "x:xmptk“Adobe XMP Core 9.0-c001 79.c0204b2, 2023/02/09-06:26:14”、xmp:CreatorTool“Adobe Premiere Pro 2024.0 (Windows)”、带时区的 CreateDate/MetadataDate/ModifyDate、xmpMM:InstanceID“xmp.iid:…”、OriginalDocumentID“xmp.did:…”、History（saved/created、softwareAgent）、xmpDM:videoFrameRate“60.000000”、videoFieldOrder Progressive、videoPixelAspectRatio 1/1、startTimecode 00:00:00:00。",
+          "title": "Premiere Pro 2024.0（Windows）导出的 XMP 数据包，GitHub"
+        },
+        "2": {
+          "detail": "证实 Premiere 的 XMP 会写入导出文件，并可被 ExifTool 读取。",
+          "title": "Premiere 会将项目数据嵌入导出 MP4 的元数据（Creative COW）"
+        }
+      },
+      "limit": {
+        "1": "样本为导出的 XMP 数据包（WebM 附属文件）。XMP 在 MP4 中的位置由 ExifTool 决定（标准 uuid/XMP_ 盒）。",
+        "2": "不复现 Ingredients/Pantry（项目源文件路径）和完整的编辑历史。",
+        "3": "Premiere 的轨道处理器名称和 MP4 品牌未经样本证实 — 保持 FFmpeg 的写法。",
+        "4": "编码由 libx264 完成（其签名会从码流中移除），而不是 Adobe/MainConcept 编码器 — 码流参数不同。"
+      },
+      "name": "Premiere Pro 2024.0 (Windows) · H.264 MP4",
+      "summary": "Premiere Pro 导出：包含 CreatorTool、文档 ID、历史记录和视频参数的 Adobe XMP 数据包。"
+    },
+    "video-resolve-free": {
+      "evidence": {
+        "1": {
+          "detail": "来自搜索摘要：Encoder“Blackmagic Design DaVinci Resolve”、tmcd 时间码轨道。页面无法访问（HTTP 403）。",
+          "title": "ExifTool 中的 Resolve 17 导出（Grass Valley 论坛）"
+        }
+      },
+      "limit": {
+        "1": "原始来源仅有搜索摘要 — 请与您的实际导出文件核对数值。",
+        "2": "Resolve 的轨道处理器名称未经证实 — 保持 FFmpeg 的写法。"
+      },
+      "name": "DaVinci Resolve（免费版）· H.264 MP4",
+      "summary": "Resolve 免费版渲染：Encoder 标签“Blackmagic Design DaVinci Resolve”及时间码 01:00:00:00。"
+    },
+    "video-resolve-studio": {
+      "evidence": {
+        "1": {
+          "detail": "“encoder: Blackmagic Design DaVinci Resolve Studio” — 来自搜索摘要；论坛页面拒绝自动读取（HTTP 403），因此证据强度中等。",
+          "title": "Resolve Studio 渲染的 MP4 的 ffprobe 输出（Blackmagic Design 论坛）"
+        },
+        "2": {
+          "detail": "来自搜索摘要：Encoder“Blackmagic Design DaVinci Resolve”、tmcd 时间码轨道。页面无法访问（HTTP 403）。",
+          "title": "ExifTool 中的 Resolve 17 导出（Grass Valley 论坛）"
+        }
+      },
+      "limit": {
+        "1": "原始来源仅有搜索摘要 — 请与您的实际导出文件核对数值。",
+        "2": "起始时间码 01:00:00:00 是 Resolve 时间线的默认值；如果您改过，请修改该字段。",
+        "3": "Resolve 的轨道处理器名称未经证实 — 保持 FFmpeg 的写法。"
+      },
+      "name": "DaVinci Resolve Studio · H.264 MP4",
+      "summary": "Resolve Studio 渲染：Encoder 标签“Blackmagic Design DaVinci Resolve Studio”及时间码 01:00:00:00。"
+    }
+  },
+  "recap": {
+    "folder": "文件夹",
+    "folder_none": "未选择",
+    "format": "比例",
+    "metadata": "元数据",
+    "metadata_removed": "删除",
+    "not_selected": "未选择",
+    "processing": "处理",
+    "sources": "源文件",
+    "sources_value": {
+      "photo": {
+        "other": "{n} 张照片 · {size}"
+      },
+      "video": {
+        "other": "{n} 个视频 · {size}"
+      }
+    }
+  },
+  "section": {
+    "export": "导出",
+    "files": {
+      "photo": "照片",
+      "video": "视频"
+    },
+    "format": "比例",
+    "metadata": "元数据",
+    "processing": "处理"
+  },
+  "settings": {
+    "about": "关于",
+    "all_installed": "所有组件均已安装",
+    "cancel": "取消下载",
+    "check_updates": "检查更新",
+    "check_updates_tooltip": "向官方下载页面查询是否有新版本。除普通网页请求外不发送任何数据。",
+    "checking_updates": "正在检查更新…",
+    "choose_path": "指定文件…",
+    "choose_title": "选择 {tool} 可执行文件",
+    "choose_tooltip": "使用已安装的 {tool} 可执行文件",
+    "clear_path": "重置",
+    "clear_tooltip": "忘记手动指定的文件并自动检测",
+    "close_tooltip": "返回处理界面（Esc）",
+    "components": "组件",
+    "components_intro": "UniqLab 不包含 FFmpeg 和 ExifTool。它会使用此电脑上已安装的副本、您指定的文件，或根据您的请求下载到其数据文件夹中的官方版本。",
+    "components_notes": "下载来自固定版本的官方发布，使用前会与 SHA-256 校验和进行比对。安装完成后可完全离线使用。FFmpeg 版本采用 GPL 许可证；ExifTool 采用 Perl Artistic License / GPL。",
+    "install_all": "全部下载并安装",
+    "install_updates": {
+      "other": "安装 {n} 个更新"
+    },
+    "missing_hint": "缺少：{names}。点击“全部下载并安装”或指定已安装的文件。",
+    "platform": "系统：{platform}",
+    "recheck": "重新检查",
+    "title": "设置"
+  },
+  "status": {
+    "checking": "检查中",
+    "installing": "正在安装",
+    "partial": "部分就绪",
+    "ready": "就绪",
+    "setup": "需要设置",
+    "tooltip": "组件与设置"
+  },
+  "theme": {
+    "accessible": "外观",
+    "auto": "自动",
+    "auto_system": "自动（跟随系统）",
+    "dark": "深色",
+    "light": "浅色",
+    "tooltip": "主题：{theme} — 点击切换"
+  },
+  "unit": {
+    "gb": "GB",
+    "kb": "KB",
+    "mb": "MB"
+  },
+  "validate": {
+    "allowed": "允许的值：{values}",
+    "bool": "应为 0 或 1",
+    "datetime": "格式 YYYY:MM:DD HH:MM:SS[+HH:MM]",
+    "empty": "值为空",
+    "int": "应为整数",
+    "lensinfo": "4 个以空格分隔的正数",
+    "max_length": {
+      "other": "最多 {n} 个字符"
+    },
+    "number": "应为数字",
+    "offset": "格式 +HH:MM",
+    "range": "范围 {minimum}–{maximum}",
+    "subsec": "1 到 6 位数字",
+    "timecode": "格式 HH:MM:SS:FF",
+    "version": "4 位数字，例如 0232"
+  }
+}

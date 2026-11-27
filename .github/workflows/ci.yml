@@ -1,0 +1,67 @@
+name: CI
+
+# Tests on macOS, Windows and Linux with real FFmpeg/ExifTool installed by UniqLab's own manager.
+# Cost control: while the repository is private, the jobs run only when started by hand
+# (Actions → CI → Run workflow). In a public repository they also run on pushes and pull requests.
+on:
+  push:
+    branches: [main]
+    paths-ignore: ["**.md", "docs/**", "licenses/**"]
+  pull_request:
+    paths-ignore: ["**.md", "docs/**", "licenses/**"]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  test:
+    name: Tests (${{ matrix.os }})
+    if: ${{ github.event_name == 'workflow_dispatch' || !github.event.repository.private }}
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 25
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [macos-15, windows-2025, ubuntu-22.04]
+    env:
+      QT_QPA_PLATFORM: offscreen
+      PYTHONUTF8: "1"
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
+        with:
+          python-version: "3.12"
+
+      - name: Qt runtime libraries (Linux)
+        if: runner.os == 'Linux'
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends libegl1 libgl1 libxkbcommon0 libfontconfig1 libglib2.0-0 libdbus-1-3 perl
+
+      - name: Install Python dependencies
+        run: |
+          python -m pip install --upgrade pip==25.3
+          python -m pip install -r requirements-dev.txt
+
+      - name: Install FFmpeg and ExifTool with UniqLab's own dependency manager
+        shell: bash
+        env:
+          UNIQLAB_DATA_DIR: ${{ runner.temp }}/uniqlab-data
+        run: python -m uniqlab.dependencies install --managed
+
+      - name: Run tests
+        shell: bash
+        env:
+          UNIQLAB_DATA_DIR: ${{ runner.temp }}/uniqlab-data
+        run: python -m pytest -q
+
+      - name: Privacy check (sources)
+        run: python tools/privacy_check.py .

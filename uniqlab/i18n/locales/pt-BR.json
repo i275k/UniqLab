@@ -1,0 +1,1168 @@
+{
+  "about": {
+    "license": "Software livre e de código aberto sob a Licença MIT.",
+    "privacy": "Tudo é processado localmente no seu computador: sem contas, sem telemetria, sem análises, sem rastreamento e sem processamento na nuvem. A rede só é usada quando você baixa componentes ou verifica atualizações.",
+    "third_party": "Feito com Qt / PySide6 (LGPLv3) e Pillow. No Windows e no Linux, as fontes da interface são Unbounded e Inter (SIL Open Font License). Veja THIRD_PARTY_NOTICES.md para detalhes."
+  },
+  "action": {
+    "again": "Executar novamente",
+    "open_components": "Configurar componentes…",
+    "start": "Iniciar processamento",
+    "stop": "Parar"
+  },
+  "aspect": {
+    "classic": "Clássico",
+    "instagram": "Instagram",
+    "instagram_feed": "Feed do Instagram",
+    "large_format": "Grande formato",
+    "photo": "Foto",
+    "pinterest": "Pinterest",
+    "portrait": "Retrato",
+    "random": "Corte aleatório",
+    "tiktok": "TikTok/Reels",
+    "ultrawide": "Ultrawide",
+    "youtube": "YouTube"
+  },
+  "common": {
+    "close": "Fechar",
+    "no": "Não",
+    "yes": "Sim"
+  },
+  "deps": {
+    "detail": {
+      "missing_encoders": "Esta versão do FFmpeg não tem os codificadores necessários: {names}.",
+      "not_found": "Não encontrado neste computador.",
+      "not_runnable": "O arquivo não executa: {error}",
+      "perl_missing": "O ExifTool precisa do Perl, que não foi encontrado. Instale o Perl pelo gerenciador de pacotes do sistema (no macOS ele já vem instalado)."
+    },
+    "error": {
+      "cancelled": "Download cancelado.",
+      "checksum": "A soma de verificação não confere (esperado {expected}…, obtido {actual}…). O arquivo foi apagado e nada foi instalado.",
+      "incompatible": "A ferramenta instalada não passou na verificação: {detail}",
+      "layout": "O arquivo compactado não contém o arquivo esperado {name}.",
+      "network": "Erro de rede: {error}. Verifique a conexão e tente de novo — o download continua de onde parou.",
+      "not_found": "O arquivo não foi encontrado no servidor: {url}",
+      "unexpected": "Erro inesperado: {error}",
+      "unsafe_archive": "O arquivo compactado contém um caminho inseguro ({name}); a instalação foi interrompida."
+    },
+    "exiftool_missing": "O ExifTool não está instalado. Instale-o em Configurações → Componentes.",
+    "line": {
+      "path": "Caminho: {path}",
+      "update": "Atualização disponível: {version}",
+      "version": "Versão {version}"
+    },
+    "msg": {
+      "installed": "Instalado: {names}.",
+      "unsupported_platform": "O download automático não está disponível para {platform}. Instale as ferramentas por conta própria e indique-as aqui.",
+      "up_to_date": "Tudo atualizado.",
+      "update_check_failed": "Não foi possível verificar atualizações: {error}",
+      "updates_available": "Atualizações disponíveis: {names}."
+    },
+    "progress": {
+      "check": "Verificando {tool}…",
+      "download": "Baixando {tool}: {done}",
+      "download_bytes": "Baixando {tool}: {done} de {total} ({percent}%)",
+      "extract": "Extraindo {tool}…",
+      "verify": "Verificando a soma de verificação do {tool}…"
+    },
+    "purpose": {
+      "exiftool": "Leitura, gravação e verificação de metadados para as predefinições.",
+      "ffmpeg": "Processamento de vídeo (codificação H.264/HEVC com libx264/libx265) e FFprobe."
+    },
+    "source": {
+      "managed": "Instalado pelo UniqLab",
+      "manual": "Escolhido manualmente",
+      "system": "Encontrado no sistema"
+    },
+    "state": {
+      "broken": "não executa",
+      "checking": "verificando…",
+      "incompatible": "incompatível",
+      "missing": "não encontrado",
+      "ok": "instalado"
+    }
+  },
+  "dialog": {
+    "choose_files": {
+      "photo": "Escolha as fotos",
+      "video": "Escolha os vídeos"
+    },
+    "choose_folder": {
+      "photo": "Escolha uma pasta com fotos",
+      "video": "Escolha uma pasta com vídeos"
+    },
+    "choose_output": "Escolha a pasta de saída",
+    "filter": {
+      "photo": "Fotos",
+      "video": "Vídeos"
+    }
+  },
+  "error": {
+    "duration": "não foi possível determinar a duração",
+    "ffmpeg_failed": "O FFmpeg falhou sem detalhes.",
+    "no_video_output": "O FFmpeg terminou sem gravar nenhum quadro de vídeo. O arquivo de origem pode usar uma codificação incomum; tente convertê-lo para MP4 antes.",
+    "startup_text": "Os detalhes foram gravados em:\n{path}",
+    "startup_title": "Erro ao iniciar",
+    "stopped": "processamento interrompido pelo usuário"
+  },
+  "fgroup": {
+    "capture": "Captura",
+    "container": "Contêiner (FFmpeg)",
+    "description": "Descrição",
+    "device": "Dispositivo",
+    "lens": "Lente",
+    "per_shot": "Captura (varia a cada foto)",
+    "time": "Horário",
+    "xmp": "XMP"
+  },
+  "field": {
+    "photo": {
+      "ExifIFD__ApertureValue": {
+        "label": "Valor de abertura f/"
+      },
+      "ExifIFD__ComponentsConfiguration": {
+        "label": "Componentes",
+        "note": "Para JPEG: “1 2 3 0” = Y Cb Cr."
+      },
+      "ExifIFD__CompositeImage": {
+        "label": "Imagem composta",
+        "options": {
+          "0": "Desconhecido",
+          "1": "Não composta",
+          "2": "Composta (geral)",
+          "3": "Composta durante a captura"
+        }
+      },
+      "ExifIFD__CreateDate": {
+        "label": "Data da digitalização"
+      },
+      "ExifIFD__DateTimeOriginal": {
+        "label": "Data da captura"
+      },
+      "ExifIFD__DigitalZoomRatio": {
+        "label": "Zoom digital"
+      },
+      "ExifIFD__ExifVersion": {
+        "label": "Versão EXIF"
+      },
+      "ExifIFD__ExposureMode": {
+        "label": "Modo de exposição",
+        "options": {
+          "0": "Auto",
+          "1": "Manual",
+          "2": "Bracketing"
+        }
+      },
+      "ExifIFD__ExposureProgram": {
+        "label": "Programa de exposição",
+        "options": {
+          "1": "Manual",
+          "2": "Programa (auto)",
+          "3": "Prioridade de abertura",
+          "4": "Prioridade do obturador"
+        }
+      },
+      "ExifIFD__ExposureTime": {
+        "label": "Tempo de exposição, s",
+        "note": "Varia de foto para foto — não faz parte das predefinições, pode ser definido manualmente."
+      },
+      "ExifIFD__FNumber": {
+        "label": "Abertura f/"
+      },
+      "ExifIFD__Flash": {
+        "label": "Flash",
+        "options": {
+          "0": "Sem flash",
+          "16": "Desligado, não disparou",
+          "24": "Auto, não disparou",
+          "25": "Auto, disparou"
+        }
+      },
+      "ExifIFD__FlashpixVersion": {
+        "label": "Versão FlashPix"
+      },
+      "ExifIFD__FocalLength": {
+        "label": "Distância focal, mm"
+      },
+      "ExifIFD__FocalLengthIn35mmFormat": {
+        "label": "Equivalente 35 mm"
+      },
+      "ExifIFD__ISO": {
+        "label": "ISO",
+        "note": "Varia de foto para foto — não faz parte das predefinições, pode ser definido manualmente."
+      },
+      "ExifIFD__LensInfo": {
+        "label": "Faixa da lente",
+        "note": "4 números: distância focal mín. e máx., abertura mín. e máx."
+      },
+      "ExifIFD__LensMake": {
+        "label": "Fabricante da lente"
+      },
+      "ExifIFD__LensModel": {
+        "label": "Modelo da lente"
+      },
+      "ExifIFD__MaxApertureValue": {
+        "label": "Abertura máx. f/"
+      },
+      "ExifIFD__MeteringMode": {
+        "label": "Modo de medição",
+        "options": {
+          "1": "Média",
+          "2": "Ponderada ao centro",
+          "3": "Pontual",
+          "5": "Matricial"
+        }
+      },
+      "ExifIFD__OffsetTime": {
+        "label": "Fuso horário (modificação)"
+      },
+      "ExifIFD__OffsetTimeDigitized": {
+        "label": "Fuso horário (digitalização)"
+      },
+      "ExifIFD__OffsetTimeOriginal": {
+        "label": "Fuso horário (captura)"
+      },
+      "ExifIFD__SceneCaptureType": {
+        "label": "Tipo de cena",
+        "options": {
+          "0": "Padrão",
+          "1": "Paisagem",
+          "2": "Retrato",
+          "3": "Noturna"
+        }
+      },
+      "ExifIFD__SceneType": {
+        "label": "Tipo de origem da cena",
+        "options": {
+          "1": "Fotografado diretamente"
+        }
+      },
+      "ExifIFD__SensingMethod": {
+        "label": "Método de captação",
+        "options": {
+          "2": "Sensor de área colorido de um chip"
+        }
+      },
+      "ExifIFD__SubSecTime": {
+        "label": "Milissegundos (modificação)"
+      },
+      "ExifIFD__SubSecTimeDigitized": {
+        "label": "Milissegundos (digitalização)"
+      },
+      "ExifIFD__SubSecTimeOriginal": {
+        "label": "Milissegundos (captura)"
+      },
+      "ExifIFD__WhiteBalance": {
+        "label": "Balanço de branco",
+        "options": {
+          "0": "Auto",
+          "1": "Manual"
+        }
+      },
+      "IFD0__Artist": {
+        "label": "Autor"
+      },
+      "IFD0__Copyright": {
+        "label": "Direitos autorais"
+      },
+      "IFD0__HostComputer": {
+        "label": "Dispositivo host",
+        "note": "Gravado pelos iPhones desde o iOS 13."
+      },
+      "IFD0__ImageDescription": {
+        "label": "Descrição"
+      },
+      "IFD0__Make": {
+        "label": "Fabricante"
+      },
+      "IFD0__Model": {
+        "label": "Modelo"
+      },
+      "IFD0__ModifyDate": {
+        "label": "Data de modificação"
+      },
+      "IFD0__ResolutionUnit": {
+        "label": "Unidade de resolução",
+        "options": {
+          "2": "polegadas",
+          "3": "cm"
+        }
+      },
+      "IFD0__Software": {
+        "label": "Software / firmware"
+      },
+      "IFD0__XResolution": {
+        "label": "Resolução X (dpi)"
+      },
+      "IFD0__YCbCrPositioning": {
+        "label": "Posicionamento YCbCr",
+        "options": {
+          "1": "Centralizado",
+          "2": "Co-situado"
+        }
+      },
+      "IFD0__YResolution": {
+        "label": "Resolução Y (dpi)"
+      },
+      "XMP-photoshop__DateCreated": {
+        "label": "Data de criação (Photoshop XMP)"
+      },
+      "XMP-x__XMPToolkit": {
+        "label": "XMP Toolkit",
+        "note": "Sem este campo, o ExifTool grava o próprio nome, “Image::ExifTool”."
+      },
+      "XMP-xmp__CreateDate": {
+        "label": "Data de criação (XMP)"
+      },
+      "XMP-xmp__CreatorTool": {
+        "label": "Programa criador (XMP)"
+      },
+      "XMP-xmp__ModifyDate": {
+        "label": "Data de modificação (XMP)"
+      }
+    },
+    "video": {
+      "FFMPEG__audio_rate": {
+        "label": "Taxa de amostragem do áudio",
+        "options": {
+          "44100": "44,1 kHz",
+          "48000": "48 kHz",
+          "keep": "Igual à origem"
+        }
+      },
+      "FFMPEG__brand": {
+        "label": "Marca principal (ftyp)",
+        "note": "Sempre “qt” para MOV.",
+        "options": {
+          "isom": "isom",
+          "mp42": "mp42",
+          "qt": "qt (QuickTime)"
+        }
+      },
+      "FFMPEG__codec": {
+        "label": "Codec de vídeo",
+        "options": {
+          "h264": "H.264 (libx264)",
+          "hevc": "HEVC (libx265)"
+        }
+      },
+      "FFMPEG__compressor_name": {
+        "label": "Nome do compressor (MOV)"
+      },
+      "FFMPEG__container": {
+        "label": "Contêiner",
+        "options": {
+          "mov": "QuickTime MOV",
+          "mp4": "MP4"
+        }
+      },
+      "FFMPEG__encoder": {
+        "label": "Tag Encoder (©too)"
+      },
+      "FFMPEG__handler_audio": {
+        "label": "Manipulador da faixa de áudio"
+      },
+      "FFMPEG__handler_video": {
+        "label": "Manipulador da faixa de vídeo"
+      },
+      "FFMPEG__movie_timescale": {
+        "label": "Escala de tempo do filme"
+      },
+      "FFMPEG__strip_sei": {
+        "label": "Remover a assinatura x264/x265 do fluxo"
+      },
+      "FFMPEG__timecode": {
+        "label": "Faixa de timecode (tmcd)",
+        "note": "Formato HH:MM:SS:QQ; vazio significa sem timecode."
+      },
+      "FFMPEG__video_timescale": {
+        "label": "Escala de tempo da faixa de vídeo"
+      },
+      "ItemList__Comment": {
+        "label": "Comentário"
+      },
+      "ItemList__Title": {
+        "label": "Título"
+      },
+      "Keys__AndroidCaptureFPS": {
+        "label": "Taxa de captura (com.android.capture.fps)"
+      },
+      "Keys__AndroidVersion": {
+        "label": "Versão do Android (com.android.version)"
+      },
+      "Keys__CreationDate": {
+        "label": "Data da gravação (com.apple.quicktime.creationdate)"
+      },
+      "Keys__Make": {
+        "label": "Fabricante (com.apple.quicktime.make)"
+      },
+      "Keys__Model": {
+        "label": "Modelo (com.apple.quicktime.model)"
+      },
+      "Keys__Software": {
+        "label": "Software (com.apple.quicktime.software)"
+      },
+      "XMP-x__XMPToolkit": {
+        "label": "XMP Toolkit",
+        "note": "Sem este campo, o ExifTool grava o próprio nome, “Image::ExifTool”."
+      },
+      "XMP-xmpDM__StartTimecodeTimeValue": {
+        "label": "Timecode inicial (XMP)"
+      },
+      "XMP-xmpDM__VideoFieldOrder": {
+        "label": "Ordem dos campos (XMP)",
+        "options": {
+          "Lower": "Campo inferior",
+          "Progressive": "Progressivo",
+          "Upper": "Campo superior"
+        }
+      },
+      "XMP-xmpDM__VideoFrameRate": {
+        "label": "Taxa de quadros (XMP)"
+      },
+      "XMP-xmpDM__VideoPixelAspectRatio": {
+        "label": "Proporção do pixel (XMP)"
+      },
+      "XMP-xmpMM__DocumentID": {
+        "label": "ID do documento (XMP)"
+      },
+      "XMP-xmpMM__HistorySoftwareAgent": {
+        "label": "Histórico: software (XMP)",
+        "note": "Gravado como um evento “saved” em xmpMM:History."
+      },
+      "XMP-xmpMM__InstanceID": {
+        "label": "ID da instância (XMP)"
+      },
+      "XMP-xmpMM__OriginalDocumentID": {
+        "label": "ID do documento original (XMP)"
+      },
+      "XMP-xmp__CreateDate": {
+        "label": "Data de criação (XMP)"
+      },
+      "XMP-xmp__CreatorTool": {
+        "label": "Programa criador (XMP)"
+      },
+      "XMP-xmp__MetadataDate": {
+        "label": "Data dos metadados (XMP)"
+      },
+      "XMP-xmp__ModifyDate": {
+        "label": "Data de modificação (XMP)"
+      }
+    }
+  },
+  "files": {
+    "choose": {
+      "photo": "Escolher fotos",
+      "video": "Escolher vídeos"
+    },
+    "choose_tooltip": "Escolha um ou mais arquivos — a lista será substituída",
+    "count": {
+      "photo": {
+        "one": "{n} foto",
+        "other": "{n} fotos"
+      },
+      "video": {
+        "one": "{n} vídeo",
+        "other": "{n} vídeos"
+      }
+    },
+    "empty": {
+      "hint": "Escolha arquivos ou uma pasta inteira — os originais ficam onde estão",
+      "photo": "Nenhuma foto selecionada",
+      "video": "Nenhum vídeo selecionado"
+    },
+    "folder": "Pasta",
+    "folder_tooltip": {
+      "photo": "Usar todas as fotos de uma pasta",
+      "video": "Usar todos os vídeos de uma pasta"
+    },
+    "kinds": {
+      "photo": "JPEG, PNG ou WebP",
+      "video": ".mp4, .mov ou .avi"
+    },
+    "kinds_hint": {
+      "photo": "JPEG, PNG, WebP de qualquer pasta",
+      "video": "Arquivos .mp4, .mov, .avi de qualquer pasta"
+    },
+    "none": {
+      "photo": "Sem fotos",
+      "video": "Sem vídeos"
+    },
+    "origin": {
+      "folder": "da pasta “{name}”",
+      "folders": {
+        "one": "de {n} pasta",
+        "other": "de {n} pastas"
+      },
+      "whole_folder": "pasta inteira “{name}”"
+    }
+  },
+  "format": {
+    "all": "Todos os formatos",
+    "center_tooltip": "O quadro é cortado no centro em {ratio}",
+    "more": "Mais",
+    "random_tooltip": "O quadro é cortado em 2–10% num ponto aleatório"
+  },
+  "group": {
+    "adobe_premiere": "Adobe Premiere Pro",
+    "apple_iphone": "Apple iPhone",
+    "capcut": "CapCut",
+    "custom": "Meus perfis",
+    "davinci_resolve": "DaVinci Resolve",
+    "none": "Sem predefinição",
+    "samsung_galaxy": "Samsung Galaxy"
+  },
+  "header": {
+    "credit_tooltip": "Abrir o perfil do autor no GitHub: {url}"
+  },
+  "language": {
+    "accessible": "Idioma da interface",
+    "tooltip": "Idioma: {language}"
+  },
+  "limits": {
+    "apple_photo": {
+      "1": "Apple MakerNotes, dados de profundidade, o gain map HDR e as imagens MPF são proprietários e não fazem parte da predefinição.",
+      "2": "Tempo de exposição, ISO, brilho e área de foco variam a cada foto — a predefinição não os inventa (podem ser definidos manualmente).",
+      "3": "O ColorSpace não vem da predefinição: segue o perfil ICC realmente incorporado ao resultado (iPhone: Display P3 + “Uncalibrated”; um arquivo sRGB recebe “sRGB”).",
+      "4": "Um iPhone real fotografa em HEIC por padrão; a predefinição descreve a variante JPEG (“Mais compatível”). A câmera nunca cria PNG/WebP com EXIF de câmera."
+    },
+    "samsung_photo": {
+      "1": "Samsung MakerNotes, o trailer da Samsung (Motion Photo, dados de captura) e o gain map Ultra HDR são proprietários e não são copiados.",
+      "2": "O ImageUniqueID da Samsung é um identificador codificado do módulo de câmera com estrutura desconhecida; não faz parte da predefinição.",
+      "3": "Tempo de exposição e ISO variam a cada foto — a predefinição não os inventa (podem ser definidos manualmente).",
+      "4": "O ColorSpace segue o perfil ICC realmente incorporado, não a predefinição.",
+      "5": "O campo Model depende do firmware: firmwares recentes gravam “Galaxy S2x”, os antigos gravam o código SM-…."
+    }
+  },
+  "log": {
+    "already_running": "O processamento já está em andamento. Aguarde a tarefa atual terminar.",
+    "components": "Componentes: {summary}",
+    "error": "Erro: {name}: {error}",
+    "file_missing": "Arquivo não encontrado, ignorando: {path}",
+    "folder_found": {
+      "photo": {
+        "one": "Pasta: {path} — {n} foto encontrada",
+        "other": "Pasta: {path} — {n} fotos encontradas"
+      },
+      "video": {
+        "one": "Pasta: {path} — {n} vídeo encontrado",
+        "other": "Pasta: {path} — {n} vídeos encontrados"
+      }
+    },
+    "meta_skipped": "  metadados: {key} não gravado — {reason}",
+    "nothing_running": "Nada está sendo processado agora.",
+    "output_dir": "Pasta de saída: {path}",
+    "photo_content": " (o conteúdo é {format})",
+    "photo_done": "Pronto: {name} | {width}×{height}",
+    "processing": "[{index}/{total}] Processando: {name}",
+    "profile": "Perfil de metadados: {name}",
+    "profile_applied": {
+      "photo": "Perfil de metadados (foto): {name}",
+      "video": "Perfil de metadados (vídeo): {name}"
+    },
+    "selected": {
+      "photo": {
+        "one": "{n} foto selecionada",
+        "other": "{n} fotos selecionadas"
+      },
+      "video": {
+        "one": "{n} vídeo selecionado",
+        "other": "{n} vídeos selecionados"
+      }
+    },
+    "skipped": {
+      "one": "{n} arquivo inadequado ignorado (é preciso {kinds})",
+      "other": "{n} arquivos inadequados ignorados (é preciso {kinds})"
+    },
+    "start": {
+      "photo": {
+        "one": "{n} foto para processar. Salvando em: {path}",
+        "other": "{n} fotos para processar. Salvando em: {path}"
+      },
+      "video": {
+        "one": "{n} vídeo para processar. Salvando em: {path}",
+        "other": "{n} vídeos para processar. Salvando em: {path}"
+      }
+    },
+    "stopped_by_user": "Processamento interrompido pelo usuário.",
+    "stopping": "Parando o processamento…",
+    "summary_done": "Concluído. Processados com sucesso: {processed} de {total}.",
+    "summary_stopped": "Interrompido. Processados com sucesso: {processed} de {total}.",
+    "video_done": "Pronto: {name} | corte de {start}s / {end}s",
+    "warning": "Atenção: {warning}"
+  },
+  "logs": {
+    "hide": "Ocultar",
+    "placeholder": "Os eventos de processamento aparecerão aqui",
+    "show": "Mostrar",
+    "title": "Logs",
+    "toggle_tooltip": "Mostrar ou ocultar os logs"
+  },
+  "meta": {
+    "configure": "Configurar…",
+    "configure_tooltip": "Predefinições de dispositivos e editores, edição manual de metadados",
+    "field": {
+      "neutral_detail": "os metadados da origem são removidos",
+      "no_exiftool": "ExifTool não instalado — não é possível gravar metadados"
+    },
+    "page": {
+      "add_field": "Adicionar campo",
+      "apply": "Aplicar ao processamento",
+      "badge": {
+        "active": "aplicado agora",
+        "builtin": "predefinição integrada",
+        "custom": "perfil próprio · baseado em “{base}”",
+        "modified": "modificado (pode ser restaurado)",
+        "modified_short": "modificado",
+        "unavailable": "indisponível"
+      },
+      "change": {
+        "added": "campo “{field}” adicionado — defina o valor",
+        "imported": {
+          "one": "{n} campo importado",
+          "other": "{n} campos importados"
+        },
+        "removed": "campo {field} removido",
+        "time": "configurações de horário e de metadados da origem atualizadas",
+        "value": "“{field}” = {value}"
+      },
+      "changed": "Alterado: {change}. Clique em “Aplicar” ou “Salvar como meu…”.",
+      "check_fields": "Marque os campos na coluna “Pode ser importado”.",
+      "close_tooltip": "Voltar ao processamento sem aplicar as alterações não salvas (Esc)",
+      "col": {
+        "field": "Campo",
+        "group": "Grupo",
+        "status": "Status",
+        "value": "Valor"
+      },
+      "datetime_placeholder": "AAAA:MM:DD HH:MM:SS",
+      "delete": "Excluir perfil",
+      "delete_confirm": "Excluir o perfil “{name}”?",
+      "discard_text": "O perfil atual tem alterações não salvas. Descartá-las?",
+      "discard_title": "Alterações não salvas",
+      "field_unsupported": "campo não suportado",
+      "fix_errors": "Corrija os campos com erros: {fields}",
+      "how": {
+        "1": "O ExifTool grava os campos EXIF/XMP/QuickTime; o FFmpeg grava a estrutura do contêiner (marca, manipuladores de faixa, timecode, codec).",
+        "2": "Depois da gravação, cada arquivo é lido novamente pelo ExifTool e comparado com o perfil; as divergências vão para o log.",
+        "3": "ColorSpace, dimensões da imagem e taxa de quadros vêm do arquivo real, não da predefinição.",
+        "4": "As predefinições nunca gravam GPS nem outros dados de localização.",
+        "5": "Regravar tags não reproduz a “impressão digital” completa de uma câmera ou de um editor: o codificador, os parâmetros do fluxo e as estruturas proprietárias continuam diferentes.",
+        "title": "Como funciona"
+      },
+      "import": "Importar os campos marcados para o perfil",
+      "import_hint": "Os valores importados substituem os campos do perfil; edite-os na aba “Campos da predefinição”.",
+      "keep": {
+        "keep": "Manter e complementar",
+        "remove": "Remover"
+      },
+      "keep_label": "Metadados da origem:",
+      "keep_tooltip": "“Manter” copia os metadados da origem e grava os campos do perfil por cima.",
+      "limitations": "Limitações",
+      "not_imported": "Não importado: {items}",
+      "offset_label": "Fuso horário:",
+      "offset_placeholder": "padrão do sistema",
+      "offset_rejected": "Fuso horário: formato +HH:MM — valor não aceito.",
+      "offset_tooltip": "Fuso horário no formato +03:00. Vazio significa o fuso deste computador.",
+      "pick_file": "Escolher arquivo…",
+      "pick_title": "Arquivo para inspecionar",
+      "profiles": "Perfis",
+      "read_failed": "Não foi possível ler os metadados: {error}",
+      "remove_field": "Remover campo selecionado",
+      "reset": "Restaurar original",
+      "reset_done": "A predefinição foi restaurada à definição original.",
+      "save_as": "Salvar como meu…",
+      "save_default": "{name} (meu)",
+      "save_label": "Nome do perfil:",
+      "save_title": "Salvar perfil",
+      "saved": "Perfil “{name}” salvo.",
+      "search": "Buscar tags",
+      "select_row": "Selecione a linha do campo que deseja remover.",
+      "source_hint": "Abra uma foto ou um vídeo para ver os metadados.",
+      "source_loaded": {
+        "one": "{name} — {n} tag",
+        "other": "{name} — {n} tags"
+      },
+      "sources": "Fontes",
+      "src": {
+        "importable": "Pode ser importado",
+        "read_only": "somente leitura",
+        "tag": "Tag (ExifTool)",
+        "value": "Valor",
+        "yes": "sim"
+      },
+      "status": {
+        "computed": "calculado para cada arquivo",
+        "container": "contêiner (FFmpeg)",
+        "error": "erro: {error}",
+        "unsupported": "não suportado — não será gravado",
+        "written": "gravado · {formats}"
+      },
+      "tab": {
+        "fields": "Campos da predefinição",
+        "manual": "Edição manual",
+        "sources": "Fontes e limitações"
+      },
+      "time": {
+        "custom": "Definir manualmente",
+        "now": "Horário do processamento",
+        "source": "Igual ao arquivo de origem"
+      },
+      "time_label": "Horário:",
+      "time_rejected": "Horário: formato AAAA:MM:DD HH:MM:SS — valor não aceito.",
+      "title": "Metadados",
+      "value_rejected": "“{field}”: {error}. Valor não aceito.",
+      "value_tooltip": "Clique duas vezes para editar. Valores com $ são calculados para cada arquivo."
+    },
+    "read_failed": "O ExifTool não conseguiu ler o arquivo",
+    "skip": {
+      "format": "{format} não suporta este campo",
+      "invalid": "valor inválido: {error}",
+      "no_audio": "o arquivo não tem faixa de áudio",
+      "undefined": "valor indefinido (sem dados de taxa de quadros)",
+      "unsupported": "campo não suportado para este tipo de arquivo"
+    },
+    "time": {
+      "custom": "horário definido manualmente",
+      "custom_invalid": "horário manual não reconhecido — usado o horário atual",
+      "now": "horário atual",
+      "source_missing": "a origem não tem data — usado o horário atual",
+      "source_tag": "horário da origem ({tag})",
+      "source_utc": "horário da origem (QuickTime, UTC)"
+    },
+    "verify": {
+      "absent": "nenhum",
+      "mismatch": " — divergências: ",
+      "mismatch_item": "{key}: esperado “{expected}”, no arquivo “{actual}”",
+      "sei_no": "sem assinatura",
+      "sei_yes": "assinatura presente",
+      "skipped": {
+        "one": ", {n} ignorado",
+        "other": ", {n} ignorados"
+      },
+      "summary": "metadados verificados: {passed}/{checked}",
+      "tmcd_no": "sem tmcd",
+      "tmcd_yes": "tmcd presente",
+      "unreadable": " — ARQUIVO ILEGÍVEL: "
+    }
+  },
+  "mode": {
+    "photo": "Foto",
+    "video": "Vídeo"
+  },
+  "notice": {
+    "files_gone": {
+      "photo": "As fotos selecionadas não estão mais disponíveis. Escolha-as novamente.",
+      "video": "Os vídeos selecionados não estão mais disponíveis. Escolha-os novamente."
+    },
+    "folder_empty": "A pasta {path} não tem arquivos {kinds}.",
+    "folder_unreadable": "Não foi possível abrir a pasta {path}: {error}",
+    "no_matching_files": "Nenhum dos arquivos selecionados é {kinds}.",
+    "output_not_writable": "Sem permissão para gravar em {path}. Escolha outra pasta.",
+    "output_unavailable": "A pasta de saída está indisponível: {path}. Escolha-a novamente.",
+    "profile_needs_exiftool": "O perfil de metadados precisa do ExifTool. Instale-o em Configurações → Componentes ou escolha “Sem predefinição”.",
+    "select_first": {
+      "photo": "Escolha as fotos primeiro.",
+      "video": "Escolha os vídeos primeiro."
+    },
+    "select_output": "Escolha a pasta de saída primeiro.",
+    "wait_mode": "Aguarde o fim do processamento para mudar de modo."
+  },
+  "noun": {
+    "photo": {
+      "one": "foto",
+      "other": "fotos"
+    },
+    "video": {
+      "one": "vídeo",
+      "other": "vídeos"
+    }
+  },
+  "offer": {
+    "details": "O FFmpeg é necessário para vídeos e o ExifTool para as predefinições de metadados. O UniqLab pode baixar agora as versões oficiais (as somas de verificação são conferidas, sem precisar de direitos de administrador), ou você pode fazer isso depois em Configurações → Componentes.",
+    "later": "Mais tarde",
+    "text": "O UniqLab não encontrou: {names}.",
+    "title": "Componentes necessários"
+  },
+  "output": {
+    "change": "Alterar",
+    "choose": "Escolher…",
+    "none": "Nenhuma pasta selecionada"
+  },
+  "panel": {
+    "caption": {
+      "checking_tools": "Verificando componentes",
+      "done": {
+        "photo": {
+          "one": "Pronto! A foto foi salva",
+          "other": "Pronto! Todas as {n} fotos foram salvas"
+        },
+        "video": {
+          "one": "Pronto! O vídeo foi salvo",
+          "other": "Pronto! Todos os {n} vídeos foram salvos"
+        }
+      },
+      "failed": "Não processados: {n} de {total}",
+      "none": {
+        "photo": "Nenhuma foto selecionada",
+        "video": "Nenhum vídeo selecionado"
+      },
+      "position": "{position} de {total} · {name}",
+      "ready": {
+        "photo": {
+          "one": "foto para processar · {option}",
+          "other": "fotos para processar · {option}"
+        },
+        "video": {
+          "one": "vídeo para processar · {option}",
+          "other": "vídeos para processar · {option}"
+        }
+      },
+      "selected": {
+        "photo": {
+          "one": "foto selecionada",
+          "other": "fotos selecionadas"
+        },
+        "video": {
+          "one": "vídeo selecionado",
+          "other": "vídeos selecionados"
+        }
+      },
+      "starting": "Iniciando…",
+      "stopped": "Processamento interrompido",
+      "stopped_saved": "Interrompido — os arquivos prontos foram salvos",
+      "video_unavailable": "Processamento de vídeo indisponível",
+      "waiting_ffmpeg": "Aguardando o FFmpeg terminar…",
+      "warnings": "Arquivos salvos, mas a verificação de metadados encontrou divergências"
+    },
+    "chip": {
+      "almost": "Quase pronto",
+      "check_settings": "Verifique as configurações",
+      "errors": "Com erros",
+      "finished": "Concluído",
+      "no_ffmpeg": "Sem FFmpeg",
+      "ready": "Pronto para iniciar",
+      "running": "Processando",
+      "stopped": "Interrompido",
+      "stopping": "Parando",
+      "waiting": "Aguardando",
+      "warnings": "Com avisos"
+    },
+    "hint": {
+      "saving": "Salvando em {path}",
+      "step1": {
+        "photo": "Passo 01 — escolha fotos ou uma pasta",
+        "video": "Passo 01 — escolha vídeos ou uma pasta"
+      },
+      "step2": "Passo 02 — escolha a pasta de saída",
+      "will_save": "Será salvo em {path}"
+    },
+    "notice": {
+      "install_ffmpeg": "Vídeos precisam do FFmpeg. Abra Configurações → Componentes para baixá-lo ou indicar uma cópia existente. O modo foto funciona sem ele."
+    },
+    "open_folder": "Abrir pasta",
+    "stat": {
+      "done": "Prontos",
+      "errors": "Erros",
+      "time": "Tempo"
+    },
+    "title": "Processamento"
+  },
+  "photo": {
+    "error": {
+      "animated": "imagens animadas não são suportadas",
+      "cmyk": "imagens CMYK não são suportadas (as cores ficariam distorcidas)",
+      "content": "o conteúdo do arquivo é {format}, não JPEG/PNG/WebP",
+      "corrupt": "o arquivo está danificado ou não é uma imagem: {error}",
+      "format": "formato não suportado (é preciso JPEG, PNG ou WebP)",
+      "mode": "o modo {mode} não é suportado (por exemplo, PNG de 16 bits)"
+    },
+    "intensity": {
+      "light": "Leve",
+      "medium": "Média",
+      "strong": "Forte"
+    },
+    "intensity_caption": {
+      "light": "Imagem quase inalterada",
+      "medium": "Invisível a olho nu",
+      "strong": "Mais diferenças, mesma aparência"
+    }
+  },
+  "preset": {
+    "photo-galaxy-s24": {
+      "evidence": {
+        "1": {
+          "detail": "ExifTool 13.63: Make “samsung”, Model “Galaxy S24”, ExifVersion 0220, OffsetTime/OffsetTimeOriginal, SubSecTime×3, 5,4 mm f/1.8, 35 mm = 23. O arquivo foi aberto depois no Picasa — os campos do Picasa (Artist, dc:Creator) não foram usados.",
+          "title": "JPEG de um Galaxy S24, firmware S921BXXS9BYH2 (Wikimedia Commons)"
+        },
+        "2": {
+          "detail": "Em todos: ExifVersion 0220, ExposureProgram 2, Software S921BXX…; câmera principal 540/100 mm f/1.8.",
+          "title": "25 JPEGs não editados de “Taken with Samsung Galaxy S24” (Commons API)"
+        },
+        "3": {
+          "detail": "SM-F711N (One UI 6) e SM-T970 (One UI 5): a mesma estrutura — Software = número do firmware, ExifVersion 0220, OffsetTime/OffsetTimeOriginal, SubSecTime×3, ImageUniqueID.",
+          "title": "Fotos Samsung One UI 5/6 (immich test-assets)"
+        }
+      },
+      "name": "Galaxy S24 · S921BXXS9BYH2 · JPEG",
+      "summary": "Câmera principal de 23 mm (5,4 mm f/1.8), firmware SM-S921B."
+    },
+    "photo-galaxy-s25-ultra": {
+      "evidence": {
+        "1": {
+          "detail": "ExifTool 13.63: Make “samsung”, Model “Galaxy S25 Ultra”, ExifVersion 0220, OffsetTime e OffsetTimeOriginal (sem Digitized), SubSecTime×3, 6,3 mm f/1.7, 35 mm = 23, MeteringMode 2, ColorSpace Uncalibrated + ICC “DCI-P3 D65 Gamut with sRGB Transfer”, gain map Ultra HDR.",
+          "title": "JPEG original de um Galaxy S25 Ultra, firmware S938BXXS7BYKS (Wikimedia Commons)"
+        },
+        "2": {
+          "detail": "54 de 56: Software S938BXXS7BYKS, ExifVersion 0220; câmera principal 630/100 mm f/170/100, MaxAperture 1,53 APEX.",
+          "title": "56 JPEGs não editados de “Taken with Samsung Galaxy S25 Ultra” (Commons API)"
+        }
+      },
+      "name": "Galaxy S25 Ultra · S938BXXS7BYKS · JPEG",
+      "summary": "Câmera principal de 23 mm (6,3 mm f/1.7), firmware SM-S938B (One UI 8)."
+    },
+    "photo-iphone-15-pro": {
+      "evidence": {
+        "1": {
+          "detail": "Análise completa no ExifTool 13.63: Make, Model, Software, HostComputer, ExifVersion 0232, OffsetTime×3, LensMake/LensModel/LensInfo, FocalLength 6.765, FNumber 1.78, 35 mm = 24, CompositeImage 2, XMPToolkit “XMP Core 6.0.0”, xmp:CreatorTool = versão do iOS, ICC Display P3.",
+          "title": "JPEG original de um iPhone 15 Pro, iOS 18.6.2 (Wikimedia Commons)"
+        },
+        "2": {
+          "detail": "Em todos: ExifVersion 0232, ExposureProgram 2, SensingMethod 2, SceneType 1, Flash 16, MeteringMode 5 (47 de 50), câmera principal 251773/37217 mm e f/1244236/699009. SubSecTime costuma estar ausente; SubSecTimeOriginal/Digitized estão presentes.",
+          "title": "50 JPEGs não editados de “Taken with iPhone 15 Pro” (Commons API)"
+        }
+      },
+      "name": "iPhone 15 Pro · iOS 18.6.2 · JPEG",
+      "summary": "Câmera principal de 24 mm (6,765 mm f/1.78), foto no modo “Mais compatível”."
+    },
+    "photo-iphone-16-pro": {
+      "evidence": {
+        "1": {
+          "detail": "ExifTool 13.63: HostComputer iPhone 16 Pro, ExifVersion 0232, OffsetTime×3, LensModel “iPhone 16 Pro back triple camera 6.765mm f/1.78”, LensInfo 2,22–15,66 mm f/1.78–2.8, CompositeImage 2.",
+          "title": "JPEG original de um iPhone 16 Pro, iOS 18.1.1 (Wikimedia Commons)"
+        },
+        "2": {
+          "detail": "Em todos: Software 18.1.1, ExifVersion 0232, MeteringMode 5, Flash 16, ExposureProgram 2.",
+          "title": "31 JPEGs não editados de “Taken with iPhone 16 Pro” (Commons API)"
+        }
+      },
+      "name": "iPhone 16 Pro · iOS 18.1.1 · JPEG",
+      "summary": "Câmera principal de 24 mm (6,765 mm f/1.78), foto no modo “Mais compatível”."
+    },
+    "photo-none": {
+      "name": "Sem metadados",
+      "summary": "Os metadados da origem são removidos; apenas a orientação e o perfil ICC são mantidos, pois sem eles a imagem ficaria distorcida."
+    },
+    "video-capcut": {
+      "evidence": {
+        "1": {
+          "detail": "Foram verificados o fórum do ExifTool, o GitHub, o VideoHelp e buscas gerais na web — nenhuma exportação do CapCut com saída do ExifTool/ffprobe/MediaInfo. Inventar valores não é permitido, por isso a predefinição está indisponível.",
+          "title": "Busca por amostras e dumps (novembro de 2026)"
+        }
+      },
+      "limit": {
+        "1": "Para obter uma predefinição: exporte um clipe do CapCut, abra-o na aba “Edição manual” e salve os campos suportados como seu próprio perfil."
+      },
+      "name": "CapCut — sem dados verificados",
+      "summary": "Nenhuma predefinição foi criada: não foi encontrada nenhuma exportação verificável do CapCut com análise de metadados."
+    },
+    "video-galaxy-android14": {
+      "evidence": {
+        "1": {
+          "detail": "ExifTool 13.63: MajorBrand mp42 (compatíveis isom, mp42), TimeScale 10000, faixa de vídeo 90000, Keys:AndroidVersion 14, manipuladores “VideoHandle”/“SoundHandle”, hvc1, AAC 48.000 Hz, o modelo SM-F711N apenas no átomo proprietário da Samsung “smta”.",
+          "title": "MP4 da câmera de um Samsung SM-F711N, One UI 6 (vídeo de Motion Photo do immich test-assets)"
+        },
+        "2": {
+          "detail": "O AOSP grava com.android.version e (nem sempre) com.android.capture.fps; o ExifTool as mostra como AndroidVersion / AndroidCaptureFPS. S21 Ultra: Android Version 12, Capture FPS 60.",
+          "title": "Chaves Android em MP4 (AOSP MPEG4Writer) e exemplos do Galaxy S21/S23 Ultra"
+        },
+        "3": {
+          "detail": "A mesma estrutura AOSP (SoundHandle, MetaHandle, Keys AndroidMake/Model/CaptureFPS) — confirma o formato comum do Android.",
+          "title": "Para comparação: MP4 de um Pixel 6 Pro (immich test-assets, waterfall.mp4)"
+        }
+      },
+      "limit": {
+        "1": "O modelo Samsung fica só no átomo proprietário “smta” e não é reproduzido, por isso as tags padrão não têm modelo (como nos arquivos reais da Samsung).",
+        "2": "A lista de marcas compatíveis é gerada pelo FFmpeg (mp42, iso2, …), e não isom+mp42 como nos arquivos da Samsung.",
+        "3": "com.android.capture.fps não é gravado por todas as versões — adicione-o manualmente se precisar.",
+        "4": "Resolução, taxa de quadros e bitrate vêm do seu vídeo. O GPS (©xyz) não é gravado."
+      },
+      "name": "Galaxy (câmera Samsung) · Android 14 · HEVC (MP4)",
+      "summary": "MP4 da câmera Samsung: marca mp42, HEVC, AAC 48 kHz, chave com.android.version."
+    },
+    "video-iphone-12-pro": {
+      "evidence": {
+        "1": {
+          "detail": "ExifTool 13.63: MajorBrand “qt”, Keys Make/Model/Software/CreationDate (com fuso horário), TimeScale 600, manipuladores “Core Media Video/Audio/Metadata”, HandlerVendorID Apple, CompressorID hvc1 / CompressorName “HEVC”, AAC 44.100 Hz, além de 3 faixas de metadados da Apple (mebx).",
+          "title": "Vídeo original de um iPhone 12 Pro, iOS 17.3.1 (immich test-assets, train.mov)"
+        }
+      },
+      "limit": {
+        "1": "As faixas de metadados da Apple (mebx: estabilização, orientação da lente) e as chaves de faixa LensModel/FocalLength são estruturas privadas da Apple e não são reproduzidas.",
+        "2": "O FFmpeg grava VendorID “FFmpeg” na descrição da amostra e o manipulador de dados “DataHandler” em vez de “Core Media Data Handler”; HandlerVendorID “Apple” não é definido — são limites do muxer, e as estruturas binárias não são editadas à mão.",
+        "3": "O original foi gravado em HLG de 10 bits (BT.2020); o resultado é SDR de 8 bits. Resolução e taxa de quadros vêm do seu vídeo.",
+        "4": "GPS e com.apple.quicktime.location.* não são gravados."
+      },
+      "name": "iPhone 12 Pro · iOS 17.3.1 · HEVC (MOV)",
+      "summary": "Gravado pela câmera do iPhone: QuickTime MOV, HEVC, AAC 44,1 kHz, chaves com.apple.quicktime.*."
+    },
+    "video-none": {
+      "evidence": {
+        "1": {
+          "detail": "ffmpeg -map_metadata -1, libx264, MP4.",
+          "title": "Comportamento original do aplicativo"
+        }
+      },
+      "name": "Sem metadados (clássico)",
+      "summary": "Comportamento clássico: todos os metadados da origem são removidos; arquivo MP4, H.264."
+    },
+    "video-premiere-2024": {
+      "evidence": {
+        "1": {
+          "detail": "x:xmptk “Adobe XMP Core 9.0-c001 79.c0204b2, 2023/02/09-06:26:14”, xmp:CreatorTool “Adobe Premiere Pro 2024.0 (Windows)”, CreateDate/MetadataDate/ModifyDate com fuso horário, xmpMM:InstanceID “xmp.iid:…”, OriginalDocumentID “xmp.did:…”, History (saved/created, softwareAgent), xmpDM:videoFrameRate “60.000000”, videoFieldOrder Progressive, videoPixelAspectRatio 1/1, startTimecode 00:00:00:00.",
+          "title": "Pacote XMP de uma exportação do Premiere Pro 2024.0 (Windows), GitHub"
+        },
+        "2": {
+          "detail": "Confirma que o XMP do Premiere vai para os arquivos exportados e pode ser lido pelo ExifTool.",
+          "title": "O Premiere incorpora dados do projeto nos metadados dos MP4 exportados (Creative COW)"
+        }
+      },
+      "limit": {
+        "1": "A amostra é um pacote XMP de exportação (sidecar WebM). A posição do XMP dentro do MP4 é definida pelo ExifTool (caixa uuid/XMP_ padrão).",
+        "2": "Ingredients/Pantry (caminhos das fontes do projeto) e o histórico completo de edições não são reproduzidos.",
+        "3": "Os nomes dos manipuladores de faixa e a marca MP4 do Premiere não foram confirmados por uma amostra — ficam como o FFmpeg os grava.",
+        "4": "A codificação é feita pelo libx264 (sua assinatura é removida do fluxo), não pelo codificador Adobe/MainConcept — os parâmetros do fluxo são diferentes."
+      },
+      "name": "Premiere Pro 2024.0 (Windows) · H.264 MP4",
+      "summary": "Exportação do Premiere Pro: pacote XMP da Adobe com CreatorTool, IDs de documento, histórico e parâmetros de vídeo."
+    },
+    "video-resolve-free": {
+      "evidence": {
+        "1": {
+          "detail": "De um trecho de busca: Encoder “Blackmagic Design DaVinci Resolve”, faixa de timecode tmcd. A página está bloqueada (HTTP 403).",
+          "title": "Exportação do Resolve 17 no ExifTool (fórum da Grass Valley)"
+        }
+      },
+      "limit": {
+        "1": "A fonte primária só está disponível como trecho de busca — compare os valores com a sua exportação real.",
+        "2": "Os nomes dos manipuladores de faixa do Resolve não foram confirmados — ficam como o FFmpeg os grava."
+      },
+      "name": "DaVinci Resolve (gratuito) · H.264 MP4",
+      "summary": "Render da versão gratuita do Resolve: tag Encoder “Blackmagic Design DaVinci Resolve” e timecode 01:00:00:00."
+    },
+    "video-resolve-studio": {
+      "evidence": {
+        "1": {
+          "detail": "“encoder: Blackmagic Design DaVinci Resolve Studio” — de um trecho de busca; a página do fórum bloqueia leitura automática (HTTP 403), então a evidência é moderada.",
+          "title": "Saída do ffprobe para um MP4 renderizado no Resolve Studio (fórum da Blackmagic Design)"
+        },
+        "2": {
+          "detail": "De um trecho de busca: Encoder “Blackmagic Design DaVinci Resolve”, faixa de timecode tmcd. A página está bloqueada (HTTP 403).",
+          "title": "Exportação do Resolve 17 no ExifTool (fórum da Grass Valley)"
+        }
+      },
+      "limit": {
+        "1": "As fontes primárias só estão disponíveis como trechos de busca — compare os valores com a sua exportação real.",
+        "2": "O timecode inicial 01:00:00:00 é o padrão da timeline do Resolve; se você o alterou, ajuste o campo.",
+        "3": "Os nomes dos manipuladores de faixa do Resolve não foram confirmados — ficam como o FFmpeg os grava."
+      },
+      "name": "DaVinci Resolve Studio · H.264 MP4",
+      "summary": "Render do Resolve Studio: tag Encoder “Blackmagic Design DaVinci Resolve Studio” e timecode 01:00:00:00."
+    }
+  },
+  "recap": {
+    "folder": "Pasta",
+    "folder_none": "não selecionada",
+    "format": "Formato",
+    "metadata": "Metadados",
+    "metadata_removed": "removidos",
+    "not_selected": "não selecionados",
+    "processing": "Processamento",
+    "sources": "Origem",
+    "sources_value": {
+      "photo": {
+        "one": "{n} foto · {size}",
+        "other": "{n} fotos · {size}"
+      },
+      "video": {
+        "one": "{n} vídeo · {size}",
+        "other": "{n} vídeos · {size}"
+      }
+    }
+  },
+  "section": {
+    "export": "Exportar",
+    "files": {
+      "photo": "Fotos",
+      "video": "Vídeos"
+    },
+    "format": "Formato",
+    "metadata": "Metadados",
+    "processing": "Processamento"
+  },
+  "settings": {
+    "about": "Sobre",
+    "all_installed": "Todos os componentes instalados",
+    "cancel": "Cancelar download",
+    "check_updates": "Verificar atualizações",
+    "check_updates_tooltip": "Consulta as páginas oficiais de download em busca de versões mais novas. Nada é enviado além de uma requisição web comum.",
+    "checking_updates": "Verificando atualizações…",
+    "choose_path": "Escolher arquivo…",
+    "choose_title": "Escolha o executável do {tool}",
+    "choose_tooltip": "Usar um executável do {tool} já instalado",
+    "clear_path": "Redefinir",
+    "clear_tooltip": "Esquecer o arquivo escolhido manualmente e detectar automaticamente",
+    "close_tooltip": "Voltar ao processamento (Esc)",
+    "components": "Componentes",
+    "components_intro": "O UniqLab não inclui o FFmpeg nem o ExifTool. Ele usa cópias já instaladas neste computador, um arquivo que você escolher ou versões oficiais que baixa, a seu pedido, para a própria pasta de dados.",
+    "components_notes": "Os downloads vêm de versões oficiais fixadas e são conferidos com somas SHA-256 antes do uso. Depois da instalação, tudo funciona offline. As versões do FFmpeg são licenciadas sob a GPL; o ExifTool é distribuído sob a Perl Artistic License / GPL.",
+    "install_all": "Baixar e instalar tudo",
+    "install_updates": {
+      "one": "Instalar {n} atualização",
+      "other": "Instalar {n} atualizações"
+    },
+    "missing_hint": "Faltando: {names}. Clique em “Baixar e instalar tudo” ou escolha um arquivo existente.",
+    "platform": "Sistema: {platform}",
+    "recheck": "Verificar novamente",
+    "title": "Configurações"
+  },
+  "status": {
+    "checking": "Verificando",
+    "installing": "Instalando",
+    "partial": "Parcialmente pronto",
+    "ready": "Pronto",
+    "setup": "Configuração necessária",
+    "tooltip": "Componentes e configurações"
+  },
+  "theme": {
+    "accessible": "Aparência",
+    "auto": "Auto",
+    "auto_system": "Auto (seguir o sistema)",
+    "dark": "Escuro",
+    "light": "Claro",
+    "tooltip": "Tema: {theme} — clique para mudar"
+  },
+  "unit": {
+    "gb": "GB",
+    "kb": "KB",
+    "mb": "MB"
+  },
+  "validate": {
+    "allowed": "permitido: {values}",
+    "bool": "esperado 0 ou 1",
+    "datetime": "formato AAAA:MM:DD HH:MM:SS[+HH:MM]",
+    "empty": "valor vazio",
+    "int": "esperado um número inteiro",
+    "lensinfo": "4 números positivos separados por espaços",
+    "max_length": {
+      "one": "no máximo {n} caractere",
+      "other": "no máximo {n} caracteres"
+    },
+    "number": "esperado um número",
+    "offset": "formato +HH:MM",
+    "range": "intervalo {minimum}–{maximum}",
+    "subsec": "de 1 a 6 dígitos",
+    "timecode": "formato HH:MM:SS:QQ",
+    "version": "4 dígitos, por exemplo 0232"
+  }
+}

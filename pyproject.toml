@@ -1,0 +1,46 @@
+[build-system]
+requires = ["setuptools>=69"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "uniqlab"
+version = "1.0.0"
+description = "UniqLab — local video & image processing with evidence-based metadata presets"
+readme = "README.md"
+license = "MIT"
+license-files = ["LICENSE"]
+authors = [{ name = "onyx.x (i275k)" }]
+requires-python = ">=3.12,<3.14"
+dependencies = [
+    "PySide6-Essentials==6.11.3",
+    "Pillow==12.3.0",
+    "certifi==2026.10.23",
+]
+classifiers = [
+    "Programming Language :: Python :: 3.12",
+    "Operating System :: MacOS",
+    "Operating System :: Microsoft :: Windows",
+    "Operating System :: POSIX :: Linux",
+    "Topic :: Multimedia :: Video :: Conversion",
+    "Topic :: Multimedia :: Graphics :: Graphics Conversion",
+]
+
+[project.urls]
+Homepage = "https://github.com/i275k"
+
+[project.gui-scripts]
+uniqlab = "uniqlab.app:main"
+
+[tool.setuptools.packages.find]
+include = ["uniqlab*"]
+
+[tool.setuptools.package-data]
+uniqlab = ["assets/*.png", "assets/fonts/*", "i18n/locales/*.json"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-ra"
+markers = [
+    "tools: needs FFmpeg and ExifTool (installed via the dependency manager or present on the system)",
+    "network: downloads from the internet",
+]

@@ -1,0 +1,254 @@
+# Builds and verifies the release packages. Runs only when started by hand (Actions → Build installers →
+# Run workflow). The packages are stored as workflow artifacts. Nothing is published: at most a DRAFT
+# release is created when the "create_draft_release" box is ticked, and a maintainer must review and
+# publish it manually.
+name: Build installers
+
+on:
+  workflow_dispatch:
+    inputs:
+      create_draft_release:
+        description: "Also create a draft GitHub release with the packages (never published automatically)"
+        type: boolean
+        default: false
+
+permissions:
+  contents: read
+
+concurrency:
+  group: build-${{ github.ref }}
+  cancel-in-progress: false
+
+env:
+  PYTHONUTF8: "1"
+
+jobs:
+  macos:
+    name: macOS arm64 (DMG)
+    runs-on: macos-15
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
+        with:
+          python-version: "3.12"
+      - name: Install build dependencies
+        run: |
+          python -m pip install --upgrade pip==25.3
+          python -m pip install -r requirements-dev.txt
+      - name: Tests (without external tools)
+        env:
+          QT_QPA_PLATFORM: offscreen
+        run: python -m pytest -q -m "not tools"
+      - name: Build DMG
+        run: packaging/macos/build_dmg.sh
+      - name: Verify DMG and run the packaged app
+        env:
+          QT_QPA_PLATFORM: offscreen
+          UNIQLAB_DATA_DIR: ${{ runner.temp }}/uniqlab-data
+        run: |
+          DMG="$(ls dist/*.dmg)"
+          hdiutil verify "$DMG"
+          MNT="$(mktemp -d)"
+          hdiutil attach -nobrowse -readonly -mountpoint "$MNT" "$DMG"
+          ls -la "$MNT"
+          test -L "$MNT/Applications"
+          # "Install" like a user would: copy the app out of the image.
+          mkdir -p "$RUNNER_TEMP/Applications"
+          ditto "$MNT/UniqLab.app" "$RUNNER_TEMP/Applications/UniqLab.app"
+          python tools/privacy_check.py "$MNT"
+          hdiutil detach "$MNT"
+          APP="$RUNNER_TEMP/Applications/UniqLab.app"
+          codesign --verify --deep --strict --verbose=2 "$APP"
+          codesign -dv "$APP" 2>&1 | grep -E "Signature=adhoc|Identifier="
+          ARCHS="$(lipo -archs "$APP/Contents/MacOS/UniqLab")"
+          echo "architectures: $ARCHS"
+          test "$ARCHS" = "arm64"
+          plutil -p "$APP/Contents/Info.plist" | grep -E "CFBundleIdentifier|CFBundleShortVersionString|LSMinimumSystemVersion"
+          if find "$APP" -iname "ffmpeg*" -o -iname "ffprobe*" -o -iname "exiftool*" | grep .; then
+            echo "FFmpeg/ExifTool must not be bundled"; exit 1
+          fi
+          "$APP/Contents/MacOS/UniqLab" --self-test "$RUNNER_TEMP/selftest.json" --install-tools || STATUS=$?
+          python tools/print_selftest.py "$RUNNER_TEMP/selftest.json"
+          exit "${STATUS:-0}"
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: uniqlab-macos-arm64
+          path: dist/*.dmg*
+          if-no-files-found: error
+          retention-days: 3
+
+  windows:
+    name: Windows x64 (installer)
+    runs-on: windows-2025
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
+        with:
+          python-version: "3.12"
+      - name: Install build dependencies
+        run: |
+          python -m pip install --upgrade pip==25.3
+          python -m pip install -r requirements-dev.txt
+      - name: Install Inno Setup 6.7.4 (pinned, SHA-256 verified)
+        shell: pwsh
+        run: |
+          $url = "https://github.com/jrsoftware/issrc/releases/download/is-6_7_4/innosetup-6.7.4.exe"
+          $expected = "a549929319f9120716677c685535ca4671e4b937b5fdc87e2585f32d8eb30e8c"
+          $file = Join-Path $env:RUNNER_TEMP "innosetup-6.7.4.exe"
+          Invoke-WebRequest -Uri $url -OutFile $file
+          $actual = (Get-FileHash $file -Algorithm SHA256).Hash.ToLower()
+          if ($actual -ne $expected) { throw "Inno Setup checksum mismatch: $actual" }
+          Start-Process -FilePath $file -ArgumentList "/VERYSILENT", "/SUPPRESSMSGBOXES", "/NORESTART", "/SP-", "/CURRENTUSER" -Wait
+      - name: Tests (without external tools)
+        env:
+          QT_QPA_PLATFORM: offscreen
+        run: python -m pytest -q -m "not tools"
+      - name: Build installer
+        shell: pwsh
+        run: packaging\windows\build_installer.ps1
+      - name: Install silently and run the installed app
+        shell: pwsh
+        env:
+          UNIQLAB_DATA_DIR: ${{ runner.temp }}\uniqlab-data
+        run: |
+          $setup = (Get-ChildItem dist\UniqLab-*-windows-x64.exe).FullName
+          $target = Join-Path $env:RUNNER_TEMP "UniqLab Install"
+          $p = Start-Process -FilePath $setup -ArgumentList "/VERYSILENT", "/SUPPRESSMSGBOXES", "/NORESTART", "/CURRENTUSER", "/DIR=`"$target`"" -Wait -PassThru
+          if ($p.ExitCode -ne 0) { throw "installer exit code $($p.ExitCode)" }
+          $exe = Join-Path $target "UniqLab.exe"
+          if (-not (Test-Path $exe)) { throw "UniqLab.exe not installed" }
+          foreach ($f in @("LICENSE", "THIRD_PARTY_NOTICES.md", "LGPL-3.0.txt", "unins000.exe")) {
+            $hit = Get-ChildItem -Path $target -Recurse -Filter $f | Select-Object -First 1
+            if (-not $hit) { throw "missing $f in the installation" }
+          }
+          # PE header: machine 0x8664 = x64
+          $bytes = [System.IO.File]::ReadAllBytes($exe)
+          $pe = [BitConverter]::ToInt32($bytes, 0x3C)
+          $machine = [BitConverter]::ToUInt16($bytes, $pe + 4)
+          Write-Host ("machine: 0x{0:X4}" -f $machine)
+          if ($machine -ne 0x8664) { throw "UniqLab.exe is not x64" }
+          if (Get-ChildItem -Path $target -Recurse -Include "ffmpeg*", "ffprobe*", "exiftool*") { throw "FFmpeg/ExifTool must not be bundled" }
+          python tools/privacy_check.py "$target"
+          $report = Join-Path $env:RUNNER_TEMP "selftest.json"
+          $run = Start-Process -FilePath $exe -ArgumentList "--self-test", "`"$report`"", "--install-tools" -Wait -PassThru
+          python tools/print_selftest.py "$report"
+          if ($run.ExitCode -ne 0) { throw "self-test exit code $($run.ExitCode)" }
+          $un = Start-Process -FilePath (Join-Path $target "unins000.exe") -ArgumentList "/VERYSILENT", "/SUPPRESSMSGBOXES", "/NORESTART" -Wait -PassThru
+          Write-Host "uninstaller exit code: $($un.ExitCode)"
+          Start-Sleep -Seconds 3
+          if (Test-Path $exe) { throw "uninstaller left UniqLab.exe behind" }
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: uniqlab-windows-x64
+          path: dist/UniqLab-*-windows-x64.exe*
+          if-no-files-found: error
+          retention-days: 3
+
+  linux:
+    name: Linux x64 (AppImage)
+    runs-on: ubuntu-22.04
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
+        with:
+          python-version: "3.12"
+      - name: System libraries
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends libegl1 libgl1 libxkbcommon0 libfontconfig1 libglib2.0-0 libdbus-1-3 file perl
+      - name: Install build dependencies
+        run: |
+          python -m pip install --upgrade pip==25.3
+          python -m pip install -r requirements-dev.txt
+      - name: Tests (without external tools)
+        env:
+          QT_QPA_PLATFORM: offscreen
+        run: python -m pytest -q -m "not tools"
+      - name: Build AppImage
+        run: packaging/linux/build_appimage.sh
+      - name: Verify AppImage and run it
+        env:
+          QT_QPA_PLATFORM: offscreen
+          UNIQLAB_DATA_DIR: ${{ runner.temp }}/uniqlab-data
+        run: |
+          IMG="$(ls "$GITHUB_WORKSPACE"/dist/*.AppImage)"
+          file "$IMG"
+          cd "$RUNNER_TEMP"
+          "$IMG" --appimage-extract >/dev/null
+          file squashfs-root/usr/lib/UniqLab/UniqLab | tee /dev/stderr | grep -q "x86-64"
+          for f in LICENSE THIRD_PARTY_NOTICES.md licenses/LGPL-3.0.txt; do
+            test -f "squashfs-root/usr/lib/UniqLab/_internal/$f" || { echo "missing $f"; exit 1; }
+          done
+          if find squashfs-root -iname "ffmpeg*" -o -iname "ffprobe*" -o -iname "exiftool*" | grep .; then
+            echo "FFmpeg/ExifTool must not be bundled"; exit 1
+          fi
+          python "$GITHUB_WORKSPACE/tools/privacy_check.py" squashfs-root
+          # --appimage-extract-and-run: GitHub runners have no FUSE 2.
+          "$IMG" --appimage-extract-and-run --self-test "$RUNNER_TEMP/selftest.json" --install-tools || STATUS=$?
+          python "$GITHUB_WORKSPACE/tools/print_selftest.py" "$RUNNER_TEMP/selftest.json"
+          exit "${STATUS:-0}"
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: uniqlab-linux-x64
+          path: dist/*.AppImage*
+          if-no-files-found: error
+          retention-days: 3
+
+  checksums:
+    name: SHA-256 checksums
+    needs: [macos, windows, linux]
+    runs-on: ubuntu-22.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8.0.2
+        with:
+          path: packages
+          merge-multiple: true
+      - name: Verify per-platform checksums and write SHA256SUMS.txt
+        run: |
+          cd packages
+          for f in ./*.sha256; do sha256sum -c "$f"; done
+          rm -f ./*.sha256
+          sha256sum UniqLab-* > SHA256SUMS.txt
+          cat SHA256SUMS.txt
+          ls -la
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: uniqlab-release-packages
+          path: packages/*
+          if-no-files-found: error
+          retention-days: 7
+
+  draft-release:
+    name: Draft release (manual opt-in)
+    needs: [checksums]
+    if: ${{ inputs.create_draft_release }}
+    runs-on: ubuntu-22.04
+    timeout-minutes: 10
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8.0.2
+        with:
+          name: uniqlab-release-packages
+          path: packages
+      - name: Create draft release (not published)
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+        run: |
+          VERSION="$(python3 -c 'import uniqlab; print(uniqlab.__version__)')"
+          gh release create "v${VERSION}" packages/* --draft --title "UniqLab ${VERSION}" \
+            --notes "Unsigned builds — see docs/INSTALL.md for first-launch steps. Verify downloads with SHA256SUMS.txt."

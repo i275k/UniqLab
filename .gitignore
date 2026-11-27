@@ -1,0 +1,46 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+.pytest_cache/
+
+# Build output
+build/
+dist/
+*.dmg
+*.AppImage
+*.exe
+SHA256SUMS*
+packaging/linux/AppDir/
+packaging/.tools/
+
+# Runtime data (tools downloaded by the app, settings, logs)
+uniqlab-data/
+startup_error.log
+*.log
+
+# Never commit third-party binaries: UniqLab downloads them at runtime.
+ffmpeg
+ffprobe
+exiftool
+vendor/
+
+# OS / editor
+.DS_Store
+._*
+Thumbs.db
+.idea/
+.vscode/
+
+# Local-only material (never part of the public repository)
+.uniqlab-data/
+*.dmg.sha256
+*.exe.sha256
+*.AppImage.sha256
+.env
+.env.*
+*.pem
+*.key
+.claude/

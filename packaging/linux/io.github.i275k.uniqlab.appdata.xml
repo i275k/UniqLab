@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="desktop-application">
+  <id>io.github.i275k.uniqlab</id>
+  <metadata_license>MIT</metadata_license>
+  <project_license>MIT</project_license>
+  <name>UniqLab</name>
+  <summary>Video &amp; image processing with metadata presets</summary>
+  <description>
+    <p>UniqLab makes subtle, local changes to videos and photos and can write evidence-based device and editor metadata presets. Everything runs on your computer: no accounts, no telemetry, no cloud processing.</p>
+  </description>
+  <launchable type="desktop-id">uniqlab.desktop</launchable>
+  <url type="homepage">https://github.com/i275k</url>
+  <developer id="io.github.i275k">
+    <name>onyx.x (i275k)</name>
+  </developer>
+  <content_rating type="oars-1.1"/>
+  <releases>
+    <release version="1.0.0" date="2026-11-26"/>
+  </releases>
+</component>
