@@ -4470,14 +4470,18 @@ class UniqLabWindow(QMainWindow):
                     QTimer.singleShot(250, self._offer_install)
 
     def _log_tool_summary(self) -> None:
+        # Log only when the components actually change: retranslate_ui() also lands here, and a
+        # language switch must not repeat the same summary in the new language.
+        states = tuple((tool, self.controller.status(tool).state, self.controller.status(tool).version)
+                       for tool in dependencies.TOOLS)
+        if states == getattr(self, "_last_tool_states", None):
+            return
+        self._last_tool_states = states
         summary = []
         for tool in dependencies.TOOLS:
             status = self.controller.status(tool)
             summary.append(f"{TOOL_TITLES[tool]} {status.version}" if status.ok else f"{TOOL_TITLES[tool]}: {tr(f'deps.state.{status.state}')}")
-        line = tr("log.components", summary=" · ".join(summary))
-        if line != getattr(self, "_last_tool_line", ""):
-            self._last_tool_line = line
-            self._append_log(line)
+        self._append_log(tr("log.components", summary=" · ".join(summary)))
 
     def _offer_install(self) -> None:
         missing = self.controller.missing()

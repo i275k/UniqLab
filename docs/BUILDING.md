@@ -108,11 +108,14 @@ QT_QPA_PLATFORM=offscreen UNIQLAB_DATA_DIR=/tmp/uniqlab-selftest \
 python tools/print_selftest.py report.json
 ```
 
-It verifies the bundled resources and license files, all five catalogs, language switching,
-the main window and the Settings/Metadata pages, Pillow photo processing with Unicode file
-names and — with `--install-tools` — downloads the pinned FFmpeg/ExifTool into
-`UNIQLAB_DATA_DIR` and processes a video and a photo with several metadata presets while
-network access is blocked inside the process. The option is not shown in the UI.
+It verifies the bundled resources and license files, all five catalogs, the main window and
+the Settings/Metadata pages, and Pillow photo processing with Unicode file names. Language
+switching is checked against each catalog after the window's own background component
+detection has finished — first on a clean system (FFmpeg/ExifTool installed on the machine are
+hidden from detection, so every runner starts without components) and, with `--install-tools`,
+again after the pinned FFmpeg/ExifTool have been downloaded into `UNIQLAB_DATA_DIR`. It then
+processes a video and a photo with several metadata presets while network access is blocked
+inside the process. Use an empty `UNIQLAB_DATA_DIR`. The option is not shown in the UI.
 
 ### Release workflow
 

@@ -57,15 +57,92 @@ def test_credit_opens_github(window, monkeypatch):
     assert opened == ["https://github.com/i275k"]
 
 
+def _settle_detection(window, qapp, timeout=30):
+    """Wait for the window's own asynchronous component detection (started 150 ms after opening)."""
+    end = time.time() + timeout
+    while (not window.controller.detected_once or window.controller.detecting) and time.time() < end:
+        _pump(qapp, 0.02)
+    assert window.controller.detected_once and not window.controller.detecting
+
+
+def _statuses(ffmpeg: bool, exiftool: bool):
+    from uniqlab import dependencies
+
+    def status(tool, ok):
+        return dependencies.ToolStatus(tool, state="ok", version="1.0", path=f"/opt/{tool}") if ok else dependencies.ToolStatus(tool)
+
+    return {"ffmpeg": status("ffmpeg", ffmpeg), "exiftool": status("exiftool", exiftool)}
+
+
 @pytest.mark.parametrize("locale", i18n.SUPPORTED_LOCALES)
 def test_language_switch_without_restart(window, qapp, locale):
+    _settle_detection(window, qapp)
     window.set_language(locale)
     _pump(qapp)
     assert i18n.current_locale() == locale
-    assert window.source_button.text() == i18n.tr("files.choose.video")
-    assert window.start_button.text() in (i18n.tr("action.start"), i18n.tr("action.open_components"))
+    assert window.source_button.text() == i18n.catalog(locale)["files.choose.video"]
+    start_key = "action.start" if window.controller.ok("ffmpeg") else "action.open_components"
+    assert window.start_button.text() == i18n.catalog(locale)[start_key]
     assert window.settings.get("language") == locale
     assert window.language_button.toolTip() == i18n.tr("language.tooltip", language=i18n.NATIVE_NAMES[locale])
+
+
+@pytest.mark.parametrize("ffmpeg, exiftool, start_key, pill_key", [
+    (False, False, "action.open_components", "status.setup"),
+    (True, False, "action.start", "status.partial"),
+    (True, True, "action.start", "status.ready"),
+])
+def test_language_switch_matches_component_state(window, qapp, ffmpeg, exiftool, start_key, pill_key):
+    _settle_detection(window, qapp)
+    window.controller._detected(_statuses(ffmpeg, exiftool))
+    _pump(qapp)
+    log_lines = window.log_box.blockCount()
+    for locale in (*i18n.SUPPORTED_LOCALES, "en"):
+        window.set_language(locale)
+        _pump(qapp, 0.02)
+        catalog = i18n.catalog(locale)
+        assert window.start_button.text() == catalog[start_key], locale
+        assert window.status_pill.label == catalog[pill_key], locale
+        # Without FFmpeg the button opens Settings → Components; with it, it waits for files.
+        assert window.start_button.isEnabled() == (not ffmpeg), locale
+    # Switching the language must not repeat the component summary in the log.
+    assert window.log_box.blockCount() == log_lines
+
+
+def test_detection_finishing_after_language_switch(window, qapp):
+    _settle_detection(window, qapp)
+    controller = window.controller
+    controller.detecting, controller.detected_once = True, False
+    controller.changed.emit()
+    window.set_language("ru")
+    _pump(qapp)
+    catalog = i18n.catalog("ru")
+    assert window.start_button.text() == catalog["action.start"] and not window.start_button.isEnabled()
+    assert window.status_pill.label == catalog["status.checking"]
+    controller._detected(_statuses(False, False))
+    _pump(qapp)
+    assert window.start_button.text() == catalog["action.open_components"] and window.start_button.isEnabled()
+    assert window.status_pill.label == catalog["status.setup"]
+    controller._detected(_statuses(True, True))
+    _pump(qapp)
+    assert window.start_button.text() == catalog["action.start"]
+    assert window.status_pill.label == catalog["status.ready"]
+
+
+def test_component_summary_is_logged_once_per_change(window, qapp):
+    _settle_detection(window, qapp)
+    controller = window.controller
+    controller._detected(_statuses(False, False))
+    _pump(qapp)
+    before = window.log_box.blockCount()
+    controller._detected(_statuses(False, False))  # re-check, nothing changed
+    window.set_language("es")
+    _pump(qapp)
+    assert window.log_box.blockCount() == before
+    controller._detected(_statuses(True, True))  # components installed
+    _pump(qapp)
+    assert window.log_box.blockCount() == before + 1
+    assert window.log_box.toPlainText().splitlines()[-1].endswith(i18n.tr("log.components", summary="FFmpeg 1.0 · ExifTool 1.0"))
 
 
 def test_media_mode_switch(window, qapp):

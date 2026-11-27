@@ -61,6 +61,22 @@ class _NoNetwork:
         socket.socket.connect = self._original
 
 
+class _HiddenSystemTools:
+    """Hides FFmpeg/ExifTool installed on the machine (PATH, Homebrew), so the first checks see a clean
+    system on every CI runner. The app's own detection code runs unchanged in its background thread."""
+
+    def __enter__(self):
+        from uniqlab import dependencies
+
+        self._module = dependencies
+        self._original = dependencies._system_candidates
+        dependencies._system_candidates = lambda _tool: []
+        return self
+
+    def __exit__(self, *_exc):
+        self._module._system_candidates = self._original
+
+
 def run(report_path: str, install_tools: bool = False) -> int:
     from PySide6.QtWidgets import QApplication
 
@@ -120,22 +136,51 @@ def run(report_path: str, install_tools: bool = False) -> int:
         return {"profile": font_profile(), "families": len(families)}
 
     report.check("fonts", fonts)
-    window = report.check("main_window", lambda: UniqLabWindow(settings))
 
-    def switch_languages():
+    def wait_for_detection(timeout: float = 60) -> None:
+        controller = window.controller
+        deadline = time.time() + timeout
+        while (not controller.detected_once or controller.detecting) and time.time() < deadline:
+            app.processEvents()
+            time.sleep(0.02)
+        assert controller.detected_once and not controller.detecting, "component detection did not finish"
+
+    def switch_languages(expect_ffmpeg: bool):
+        """Every locale must show its own catalog text for the state the window is really in."""
+        wait_for_detection()
+        controller = window.controller
+        assert controller.ok("ffmpeg") == expect_ffmpeg, f"FFmpeg detected: {controller.ok('ffmpeg')}, expected {expect_ffmpeg}"
+        ffmpeg_ok, exiftool_ok = controller.ok("ffmpeg"), controller.ok("exiftool")
+        start_key = "action.start" if ffmpeg_ok else "action.open_components"
+        pill_key = "status.ready" if ffmpeg_ok and exiftool_ok else "status.partial" if ffmpeg_ok or exiftool_ok else "status.setup"
+        log_before = window.log_box.blockCount()
         texts = {}
-        for locale in i18n.SUPPORTED_LOCALES:
+        for locale in (*i18n.SUPPORTED_LOCALES, "en"):
             window.set_language(locale)
             app.processEvents()
-            texts[locale] = window.start_button.text()
-        window.set_language("en")
-        assert len(set(texts.values())) == len(texts), f"start button not translated: {texts}"
-        return texts
+            catalog = i18n.catalog(locale)
+            shown = {"start": window.start_button.text(), "status": window.status_pill.label,
+                     "source": window.source_button.text()}
+            expected = {"start": catalog[start_key], "status": catalog[pill_key], "source": catalog["files.choose.video"]}
+            assert i18n.current_locale() == locale and settings.get("language") == locale, f"locale not applied: {locale}"
+            assert shown == expected, f"{locale}: shown {shown}, expected {expected}"
+            # Video mode: without FFmpeg the button opens Settings → Components; with it, it waits for files.
+            assert window.start_button.isEnabled() == (not ffmpeg_ok), f"{locale}: start button enabled state"
+            texts[locale] = shown["start"]
+        assert window.log_box.blockCount() == log_before, "switching the language added log lines"
+        return {"ffmpeg": ffmpeg_ok, "exiftool": exiftool_ok, "start_button": texts}
 
+    window = None
+    with _HiddenSystemTools():
+        window = report.check("main_window", lambda: UniqLabWindow(settings))
+        if window is not None:
+            window.show()
+            app.processEvents()
+            # Real asynchronous detection on a system without FFmpeg/ExifTool: in CI the data folder is
+            # empty, so nothing is installed yet (a reused folder may already hold UniqLab's own copy).
+            already_installed = dependencies.detect("ffmpeg").ok
+            report.check("language_switching", lambda: switch_languages(expect_ffmpeg=already_installed))
     if window is not None:
-        window.show()
-        app.processEvents()
-        report.check("language_switching", switch_languages)
         report.check("open_pages", lambda: (window.open_settings_page(), app.processEvents(), window.settings_page.close_page(),
                                             window.open_metadata_dialog(), app.processEvents(), window.metadata_page.close_page(),
                                             app.processEvents()) and "ok")
@@ -179,6 +224,8 @@ def run(report_path: str, install_tools: bool = False) -> int:
 
         if report.check("install_tools", install) is not None:
             from uniqlab.metadata_presets import builtin_profile
+
+            report.check("language_switching_with_tools", lambda: switch_languages(expect_ffmpeg=True))
 
             def process_offline():
                 import subprocess
