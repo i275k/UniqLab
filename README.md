@@ -21,10 +21,7 @@ FFmpeg and ExifTool — no command line needed — and processes everything offl
 
 <br>
 
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="docs/assets/screenshots/02-video-mode-dark.png">
-  <img src="docs/assets/screenshots/01-video-mode-light.png" width="880" alt="UniqLab main window in video mode: four videos from a folder are ready to process, with the 9:16 aspect ratio selected, the output folder set and a Start processing button">
-</picture>
+![UniqLab main window in video mode: four videos from a folder are ready to process, with the 9:16 aspect ratio selected, the output folder set and a Start processing button](docs/assets/screenshots/02-video-mode-dark.png)
 
 </div>
 
